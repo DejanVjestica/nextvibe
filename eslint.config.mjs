@@ -8,6 +8,7 @@ const eslintConfig = defineConfig([
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
+    "src/types/strapi/generated/**/*.d.ts",
     ".next/**",
     "out/**",
     "build/**",

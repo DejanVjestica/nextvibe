@@ -7,7 +7,7 @@ export default async function Home({
 }) {
   const { slug } = await params;
   return (
-    <div>
+    <div className="max-w-container mx-auto ">
       <h1>Locale main: {slug}</h1>
     </div>
   );

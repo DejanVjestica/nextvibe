@@ -10,7 +10,7 @@ export default async function Home({
   const articles = await getArticles(locale);
 
   return (
-    <div>
+    <div className="max-w-container mx-auto ">
       <h1>Locale main: {locale}</h1>
       <ul>
         {articles.data.map((article) => {

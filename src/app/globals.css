@@ -2,14 +2,23 @@
 
 :root {
   --background: #ffffff;
+  --second: #e7e7e7;
   --foreground: #171717;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-second: var(--second);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --max-width-container: 960px;
+  --grid-cols-1: repeat(1, minmax(0, 1fr));
+  --grid-cols-2: repeat(2, minmax(0, 1fr));
+  --grid-cols-3: repeat(3, minmax(0, 1fr));
+  --grid-cols-4: repeat(4, minmax(0, 1fr));
+  --grid-cols-12: repeat(12, minmax(0, 1fr));
 }
 
 @media (prefers-color-scheme: dark) {

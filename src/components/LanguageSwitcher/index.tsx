@@ -5,7 +5,11 @@ import { getLocalizedPath } from "@/lib/i18n-utils";
 import Link from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
 
-export function LanguageSwitcher() {
+interface LanguageSwitcherProps {
+  className?: string;
+}
+
+export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -18,19 +22,13 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <>
+    <div className={className}>
       <button
         onClick={() => toggleLanguage(currentLocale === "en" ? "de" : "en")}
-        className="py-4 px-8 cursor-pointer"
+        className="py-4 px-4 cursor-pointer"
       >
         {currentLocale === "en" ? "de" : "en"}
       </button>
-      <Link href={"/about"} prefetch>
-        about
-      </Link>
-      <Link href={"/"} prefetch>
-        home
-      </Link>
-    </>
+    </div>
   );
 }

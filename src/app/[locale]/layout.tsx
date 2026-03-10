@@ -24,11 +24,11 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: "de" | "en" }>;
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
 
-  if (!i18nConfig.locales.includes(locale)) {
+  if (!i18nConfig.locales.includes(locale as "de" | "en")) {
     notFound();
   }
 

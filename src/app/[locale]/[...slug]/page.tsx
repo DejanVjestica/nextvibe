@@ -1,7 +1,9 @@
+import { Locale } from "@/i18n-config";
+
 export default async function Home({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: Locale }>;
 }) {
   const { slug } = await params;
   return (

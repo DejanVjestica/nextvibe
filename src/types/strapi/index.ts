@@ -1,11 +1,16 @@
-import { Schema } from '@strapi/types';
-import { 
-  ApiArticleArticle, 
-  ApiAuthorAuthor, 
-  ApiCategoryCategory 
-} from './generated/contentTypes';
+import { Schema } from "@strapi/types";
+import {
+  ApiArticleArticle,
+  ApiAuthorAuthor,
+  ApiCategoryCategory,
+} from "./generated/contentTypes";
 
 export type GetAttributes<T> = T extends { attributes: infer A } ? A : never;
+
+export type StrapiItem<T> = {
+  id: number;
+  documentId: string;
+} & GetAttributes<T>;
 
 export interface StrapiResponse<T> {
   data: T;
@@ -19,12 +24,6 @@ export interface StrapiResponse<T> {
   };
 }
 
-export type Article = ApiArticleArticle;
-
-export type ArticleFields = GetAttributes<ApiArticleArticle>;
-
-export type Author = ApiAuthorAuthor;
-export type AuthorFields = GetAttributes<ApiAuthorAuthor>;
-
-export type Category = ApiCategoryCategory;
-export type CategoryFields = GetAttributes<ApiCategoryCategory>;
+export type Article = StrapiItem<ApiArticleArticle>;
+export type Author = StrapiItem<ApiAuthorAuthor>;
+export type Category = StrapiItem<ApiCategoryCategory>;

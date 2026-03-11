@@ -13,9 +13,10 @@ export default async function Home({
     <div className="max-w-container mx-auto ">
       <h1>Locale main: {locale}</h1>
       <ul>
-        {articles.data.map((article) => {
-          return <li key={article.id}>{article.title}</li>;
-        })}
+        {articles &&
+          articles.data.map((article) => {
+            return <li key={article.id}>{article.title}</li>;
+          })}
         <li></li>
       </ul>
     </div>

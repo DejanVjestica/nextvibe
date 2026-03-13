@@ -1,5 +1,5 @@
 import { Locale } from "@/i18n-config";
-import { getArticles } from "@/service/articles";
+import { getArticles } from "@/services/articles";
 
 export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;

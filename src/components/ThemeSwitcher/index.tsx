@@ -22,7 +22,7 @@ export function ThemeSwitcher() {
   return (
     <button onClick={toggleTheme} className="flex cursor-pointer items-center justify-center bg-[--bg-light] p-2 transition-colors hover:bg-[--bg-light] dark:hover:bg-[--bg-light]" aria-label={label} title={label}>
       <span className="sr-only">Theme switcher button</span>
-      {mounted && <p>{resolvedTheme === "dark" ? "light" : "dark"}</p>}
+      {mounted && <span>{resolvedTheme === "dark" ? "light" : "dark"}</span>}
     </button>
   );
 }

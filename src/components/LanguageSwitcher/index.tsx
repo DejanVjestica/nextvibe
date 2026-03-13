@@ -22,7 +22,7 @@ export function LanguageSwitcher() {
   return (
     <button onClick={() => toggleLanguage(nextLocale)} className="flex cursor-pointer items-center justify-center bg-[--bg-light] p-2 transition-colors hover:bg-[--bg-light] dark:hover:bg-[--bg-light]" aria-label={label} title={label}>
       <span className="sr-only">Language switcher button</span>
-      {nextLocale}
+      <span>{nextLocale}</span>
     </button>
   );
 }

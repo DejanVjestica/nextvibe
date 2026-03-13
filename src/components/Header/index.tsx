@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import { LanguageSwitcher } from "../LanguageSwitcher";
 import { MainNav } from "../MainNav";
+import { ThemeSwitcher } from "../ThemeSwitcher";
 
 export function Header() {
   const params = useParams();
@@ -10,10 +11,11 @@ export function Header() {
   const currentLocale = (params.locale as string) || "de";
 
   return (
-    <header className="grid gap-2 bg-second grid-cols-12">
-      <p className="col-start-2 content-center col-span-1">{currentLocale}</p>
-      <LanguageSwitcher className="col-start-10  col-span-1"></LanguageSwitcher>
-      <MainNav className="col-start-11  col-span-1 items-center"></MainNav>
+    <header className="bg-second grid grid-cols-12 gap-2">
+      <p className="col-span-1 col-start-2 content-center">{currentLocale}</p>
+      <LanguageSwitcher></LanguageSwitcher>
+      <ThemeSwitcher></ThemeSwitcher>
+      <MainNav className="col-span-1 col-start-11 items-center"></MainNav>
     </header>
   );
 }

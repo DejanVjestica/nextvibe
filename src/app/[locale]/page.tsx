@@ -1,16 +1,12 @@
 import { Locale } from "@/i18n-config";
 import { getArticles } from "@/service/articles";
 
-export default async function Home({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
+export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const articles = await getArticles(locale);
 
   return (
-    <div className="max-w-container mx-auto ">
+    <div className="max-w-container mx-auto">
       <h1>Locale main: {locale}</h1>
       <ul>
         {articles &&

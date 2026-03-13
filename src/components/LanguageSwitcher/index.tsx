@@ -2,33 +2,27 @@
 
 import { Locale } from "@/i18n-config";
 import { getLocalizedPath } from "@/lib/i18n-utils";
-import Link from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
 
-interface LanguageSwitcherProps {
-  className?: string;
-}
-
-export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
+export function LanguageSwitcher() {
   const pathname = usePathname();
   const router = useRouter();
 
   const params = useParams();
 
-  const currentLocale = (params.locale as string) || "de";
+  const currentLocale: Locale = (params.locale as Locale) ?? "de";
+  const nextLocale: Locale = currentLocale === "en" ? "de" : "en";
 
   const toggleLanguage = (newLocale: Locale) => {
-    router.push(getLocalizedPath(pathname, newLocale));
+    router.replace(getLocalizedPath(pathname, newLocale));
   };
 
+  const label = currentLocale === "en" ? "Switch to German" : "Switch to English";
+
   return (
-    <div className={className}>
-      <button
-        onClick={() => toggleLanguage(currentLocale === "en" ? "de" : "en")}
-        className="py-4 px-4 cursor-pointer"
-      >
-        {currentLocale === "en" ? "de" : "en"}
-      </button>
-    </div>
+    <button onClick={() => toggleLanguage(nextLocale)} className="flex cursor-pointer items-center justify-center bg-[--bg-light] p-2 transition-colors hover:bg-[--bg-light] dark:hover:bg-[--bg-light]" aria-label={label} title={label}>
+      <span className="sr-only">Language switcher button</span>
+      {nextLocale}
+    </button>
   );
 }

@@ -34,23 +34,13 @@
   }
 }
 
-@layer utilities {
-  .bg-background {
-    background-color: var(--background);
-  }
-  .bg-second {
-    background-color: var(--second);
-  }
-  .text-foreground {
-    color: var(--foreground);
-  }
-  .text-primary {
-    color: var(--primary);
-  }
-  .text-secondary {
-    color: var(--secondary);
-  }
-  .border-color {
-    border-color: var(--border);
-  }
+@theme {
+  --max-width-container: 960px;
+
+  --color-background: var(--background);
+  --color-second: var(--second);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-border: var(--border);
 }

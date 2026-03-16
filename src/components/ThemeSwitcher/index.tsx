@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { useParams } from "next/navigation";
 import { useEffect, useEffectEvent, useState } from "react";
 
-export function ThemeSwitcher() {
+export const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);
   const { setTheme, resolvedTheme } = useTheme();
   const params = useParams();
@@ -22,8 +22,27 @@ export function ThemeSwitcher() {
     return <div className="w-15"></div>;
   }
 
-  const ariaLabel = currentLocale === defaultLocale ? (resolvedTheme === "dark" ? "Zum hellen Design wechseln" : "Zum dunklen Design wechseln") : resolvedTheme === "dark" ? "Switch to light theme" : "Switch to dark theme";
-  const label = currentLocale === defaultLocale ? (resolvedTheme === "dark" ? "hell" : "dunkel") : resolvedTheme === "dark" ? "light" : "dark";
+  const labels = {
+    de: {
+      dark: "hell",
+      light: "dunkel",
+      aria: {
+        dark: "Zum hellen Design wechseln",
+        light: "Zum dunklen Design wechseln",
+      },
+    },
+    en: {
+      dark: "light",
+      light: "dark",
+      aria: { dark: "Switch to light theme", light: "Switch to dark theme" },
+    },
+  };
+
+  const localeKey = currentLocale === defaultLocale ? "de" : "en";
+  const themeKey: "light" | "dark" = resolvedTheme as "light" | "dark";
+
+  const label = labels[localeKey][themeKey];
+  const ariaLabel = labels[localeKey].aria[themeKey];
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
@@ -33,8 +52,7 @@ export function ThemeSwitcher() {
 
   return (
     <button onClick={toggleTheme} className={styles} aria-label={ariaLabel} title={ariaLabel}>
-      <span className="sr-only">Theme switcher button</span>
-      <span>{label}</span>
+      {label}
     </button>
   );
-}
+};

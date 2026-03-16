@@ -1,21 +1,15 @@
-"use client";
-
-import { useParams } from "next/navigation";
-import { LanguageSwitcher } from "../LanguageSwitcher";
+import { HomeButton } from "../HomeButton";
 import { MainNav } from "../MainNav";
 import { ThemeSwitcher } from "../ThemeSwitcher";
 
-export function Header() {
-  const params = useParams();
-
-  const currentLocale = (params.locale as string) || "de";
-
+export const Header = () => {
   return (
-    <header className="bg-second grid grid-cols-12 gap-2">
-      <p className="col-span-1 col-start-2 content-center">{currentLocale}</p>
-      <LanguageSwitcher></LanguageSwitcher>
-      <ThemeSwitcher></ThemeSwitcher>
-      <MainNav className="col-span-1 col-start-11 items-center"></MainNav>
+    <header className="bg-second flex justify-between px-4">
+      <HomeButton></HomeButton>
+      <div className="flex">
+        <MainNav></MainNav>
+        <ThemeSwitcher></ThemeSwitcher>
+      </div>
     </header>
   );
-}
+};

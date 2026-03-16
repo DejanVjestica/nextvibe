@@ -1,19 +1,26 @@
 "use client";
-import Link from "next/link";
+import { getLocalizedPath } from "@/lib/i18n-utils";
+import { LanguageSwitcher } from "../LanguageSwitcher";
+import { NavLink } from "../NavLink";
+import { useParams } from "next/navigation";
+import { Locale } from "@/i18n-config";
 
 interface MainNavProps {
   className?: string;
 }
 
-export function MainNav({ className }: MainNavProps) {
+export const MainNav = ({ className }: MainNavProps) => {
+  const params = useParams();
   return (
-    <nav className={` ${className} flex gap-2 `}>
-      <Link href={"/about"} prefetch>
-        about
-      </Link>
-      <Link href={"/"} prefetch>
-        home
-      </Link>
+    <nav className={` ${className} flex items-center gap-2 justify-self-center`}>
+      <ul className="contents">
+        <li>
+          <NavLink href={getLocalizedPath("/about", params.locale as Locale)} label="about"></NavLink>
+        </li>
+        <li>
+          <LanguageSwitcher></LanguageSwitcher>
+        </li>
+      </ul>
     </nav>
   );
-}
+};

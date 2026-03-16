@@ -2,25 +2,18 @@
 
 import { Locale } from "@/i18n-config";
 import { getLocalizedPath } from "@/lib/i18n-utils";
-import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
+import { NavLink } from "../NavLink";
 
-export function LanguageSwitcher() {
+export const LanguageSwitcher = () => {
   const pathname = usePathname();
 
   const params = useParams();
 
-  const currentLocale: Locale = (params.locale as Locale) ?? "de";
+  const currentLocale: Locale = params.locale as Locale;
   const nextLocale: Locale = currentLocale === "en" ? "de" : "en";
 
-  const label = currentLocale === "en" ? "Switch to German" : "Switch to English";
+  const ariaLabel = currentLocale === "en" ? "Zu Deutsch wechseln" : "Switch to English";
 
-  return (
-    <>
-      <Link href={getLocalizedPath(pathname, nextLocale)} prefetch className="flex cursor-pointer items-center justify-center bg-[--bg-light] p-2 transition-colors hover:bg-[--bg-light] dark:hover:bg-[--bg-light]" aria-label={label} title={label}>
-        <span className="sr-only">Language switcher button</span>
-        <span>{nextLocale}</span>
-      </Link>
-    </>
-  );
-}
+  return <NavLink href={getLocalizedPath(pathname, nextLocale)} label={nextLocale} ariaLabel={ariaLabel}></NavLink>;
+};

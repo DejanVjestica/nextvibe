@@ -10,11 +10,7 @@ export function getStrapiURL(path: string = "") {
   return `${baseUrl}${cleanPath}`;
 }
 
-export async function fetchStrapi<T>(
-  path: string,
-  urlParamsObject: Record<string, unknown> = {},
-  options: RequestInit = {},
-): Promise<StrapiResponse<T>> {
+export async function fetchStrapi<T>(path: string, urlParamsObject: Record<string, unknown> = {}, options: RequestInit = {}): Promise<StrapiResponse<T>> {
   const mergedOptions: RequestInit = {
     headers: {
       Accept: "application/json",
@@ -34,9 +30,7 @@ export async function fetchStrapi<T>(
     arrayFormat: "brackets",
   });
 
-  const requestUrl = getStrapiURL(
-    `/api${path}${queryString ? `?${queryString}` : ""}`,
-  );
+  const requestUrl = getStrapiURL(`/api${path}${queryString ? `?${queryString}` : ""}`);
 
   try {
     const response = await fetch(requestUrl, mergedOptions);

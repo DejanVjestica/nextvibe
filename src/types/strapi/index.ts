@@ -1,9 +1,5 @@
 import { Schema } from "@strapi/types";
-import {
-  ApiArticleArticle,
-  ApiAuthorAuthor,
-  ApiCategoryCategory,
-} from "./generated/contentTypes";
+import { ApiArticleArticle, ApiAuthorAuthor, ApiCategoryCategory, ApiAboutAbout } from "./generated/contentTypes";
 
 export type GetAttributes<T> = T extends { attributes: infer A } ? A : never;
 
@@ -27,3 +23,4 @@ export interface StrapiResponse<T> {
 export type Article = StrapiItem<ApiArticleArticle>;
 export type Author = StrapiItem<ApiAuthorAuthor>;
 export type Category = StrapiItem<ApiCategoryCategory>;
+export type About = StrapiItem<ApiAboutAbout>;

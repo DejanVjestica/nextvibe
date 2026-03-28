@@ -5,16 +5,10 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const { locales, defaultLocale } = i18nConfig;
 
-  if (
-    pathname.includes(".") ||
-    pathname.startsWith("/_next") ||
-    pathname.startsWith("/api")
-  ) {
+  if (pathname.includes(".") || pathname.startsWith("/_next") || pathname.startsWith("/api")) {
     return NextResponse.next();
   }
-  const pathLocale = locales.find(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
-  ) as Locale | undefined;
+  const pathLocale = locales.find((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`) as Locale | undefined;
 
   if (pathLocale === defaultLocale) {
     const cleanPath = pathname.replace(`/${defaultLocale}`, "") || "/";
@@ -22,9 +16,7 @@ export function proxy(request: NextRequest) {
   }
 
   if (!pathLocale) {
-    return NextResponse.rewrite(
-      new URL(`/${defaultLocale}${pathname}`, request.url),
-    );
+    return NextResponse.rewrite(new URL(`/${defaultLocale}${pathname}`, request.url));
   }
 
   return NextResponse.next();

@@ -13,14 +13,12 @@ interface RichTextProps {
 type ImageComponentProps = ComponentPropsWithoutRef<"img"> & ExtraProps;
 
 const ImageComponent = ({ src, alt, width, height, className }: ImageComponentProps) => {
-  const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL ?? "";
-  const srcString = typeof src === "string" ? src : "";
-  const pathname = srcString.startsWith("http") ? new URL(srcString).pathname : (src ?? "");
+  const srcString = typeof src === "string" && src;
   const altString = typeof alt === "string" ? alt : "";
   const widthNumber = typeof width === "number" ? width : 1000;
   const heightNumber = typeof height === "number" ? height : 1000;
 
-  return <Image className={`${className} border-border mx-auto my-10 h-auto max-w-full rounded-2xl border shadow-md`} src={`${baseURL}${pathname}`} width={widthNumber} height={heightNumber} alt={altString} sizes="(max-width: 768px) 100vw, 800px" />;
+  return <Image src={`${srcString}`} width={widthNumber} height={heightNumber} alt={altString} sizes="(max-width: 768px) 100vw, 800px" className={`${className} border-border mx-auto my-10 h-auto max-w-full rounded-2xl border shadow-md`} />;
 };
 
 export const RichText = ({ body }: RichTextProps) => {

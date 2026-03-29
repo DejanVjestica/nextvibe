@@ -37,7 +37,7 @@ export const parseStrapiMedia = (media: StrapiMedia): ParsedMediaType | null => 
         formats,
         height,
         type: "image",
-        url: fullUrl,
+        url,
         width,
       } as ParsedMediaImage;
     case "application":

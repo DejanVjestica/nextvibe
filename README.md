@@ -1,36 +1,188 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NextVibe
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/next.js-16.1.6-black)
+![React](https://img.shields.io/badge/react-19.2.3-blue)
+![Tailwind](https://img.shields.io/badge/tailwind-4-38b2ac)
+![Strapi](https://img.shields.io/badge/cms-strapi-blue)
+![Vercel](https://img.shields.io/badge/deployed-vercel-black)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
-First, run the development server:
+> A modern Next.js application powered by Strapi CMS with responsive image optimization and automated CI/CD via Vercel.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+🔗 **Live Demo:** https://nextvibe-hazel.vercel.app/
+
+---
+
+## Table of Contents
+
+- [Project Setup](#project-setup)
+- [Tech Stack & Tooling](#tech-stack--tooling)
+- [Environment Variables](#environment-variables)
+- [Deployment & CI/CD](#deployment--cicd)
+- [Image Optimization](#image-optimization)
+- [Roadmap](#roadmap)
+- [License](#license)
+
+---
+
+## Project Setup
+
+```sh
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Run Development Server
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Build for Production
 
-## Learn More
+```sh
+pnpm build
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Start Production Server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+pnpm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Lint
 
-## Deploy on Vercel
+```sh
+pnpm lint
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tech Stack & Tooling
+
+| Category   | Tool                       |
+| ---------- | -------------------------- |
+| Framework  | Next.js (App Router)       |
+| CMS        | Strapi (Cloud)             |
+| Language   | TypeScript                 |
+| Styling    | Tailwind CSS               |
+| Images     | next/image + custom loader |
+| Deployment | Vercel                     |
+| Content    | ReactMarkdown              |
+
+---
+
+## Environment Variables
+
+### Example .env
+
+```sh
+NEXT_PUBLIC_STRAPI_URL=https://your-project.strapiapp.com
+NEXT_PUBLIC_STRAPI_MEDIA_URL=https://your-project.media.strapiapp.com
+STRAPI_API_TOKEN=
+```
+
+---
+
+## Deployment & CI/CD
+
+The project is deployed on Vercel with automatic CI/CD.
+
+- `main` → Production
+- `develop` → Preview deployments
+
+```mermaid
+flowchart TD
+    Dev[Developer] -->|git push| GH[GitHub Repository]
+    GH -->|triggers| VC[Vercel CI/CD]
+    VC -->|preview branch| PREVIEW[Preview Deployment]
+    VC -->|main branch| PROD[Production Deployment]
+```
+
+---
+
+## Strapi Integration
+
+Content is fetched from Strapi using REST API:
+
+```ts
+/api/about?populate[blocks][populate]=*&locale=de
+```
+
+---
+
+## Image Optimization
+
+Images are handled using `next/image` with a custom Strapi loader.
+
+### Features
+
+- Supports Strapi formats (`thumbnail`, `small`, `medium`, `large`)
+- Works with both:
+  - Local development (`localhost:1337`)
+  - Strapi Cloud (`*.media.strapiapp.com`)
+
+- Responsive images via `srcset` and `sizes`
+- Lazy loading by default
+
+---
+
+## Roadmap
+
+### Content & Articles
+
+- [x] Integrate Strapi CMS for article content
+- [x] Render articles using `react-markdown` for rich-text support
+- [ ] Display list of articles on the home page
+- [ ] Article detail page with SEO-friendly URLs
+- [ ] Categories / tags for filtering articles
+
+### User & Author Management
+
+- [ ] Author registration and login system
+- [ ] Author dashboard to create, edit, and delete articles
+- [ ] Role-based access control (authors vs admins)
+
+### Pages & Navigation
+
+- [ ] Home page
+- [ ] About page
+- [ ] Contact page (form integration)
+- [ ] Impressum / legal notice page
+- [ ] Footer and header navigation across pages
+
+### Newsletter & Email
+
+- [ ] Newsletter subscription form
+- [ ] Integrate with email service provider (e.g., Mailchimp or Firebase)
+- [ ] Manage subscriber list and send newsletters
+
+### UI & UX Enhancements
+
+- [ ] Responsive layout with Tailwind CSS
+- [x] Dark mode toggle
+- [x] Optimized images with `next/image` and custom loader
+- [x] Lazy loading for below-the-fold images (largest content paint)
+- [ ] Hero sections / featured articles
+
+### Search & Interaction
+
+- [ ] Search and filter articles
+- [ ] Favorite / bookmark articles
+- [ ] Comments section (optional)
+
+### Testing & Quality
+
+- [ ] Unit tests with Jest
+- [ ] E2E tests with Playwright or Cypress
+- [ ] SEO optimization and meta tags
+
+### Deployment & CI/CD
+
+- [x] Automated builds and deployments via Vercel
+- [x] Preview environments for feature branches
+
+---
+
+## License
+
+MIT

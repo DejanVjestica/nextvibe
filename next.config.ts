@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "**.strapiapp.com",
+        hostname: "**.media.strapiapp.com",
         pathname: "/**",
       },
     ],

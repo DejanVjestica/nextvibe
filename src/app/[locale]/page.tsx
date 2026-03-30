@@ -6,7 +6,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
   const articles = await getArticles(locale);
 
   return (
-    <div className="max-w-container mx-auto p-8">
+    <div className="max-w-container mx-auto bg-amber-600 p-8">
       <h1>Locale main: {locale}</h1>
       <ul>
         {articles &&

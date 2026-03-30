@@ -1,6 +1,6 @@
 import { StrapiMedia, StrapiImageFormats } from "@/types/strapi/media";
 
-type ParsedMediaImage = {
+export type ParsedMediaImage = {
   alternativeText: string | "";
   formats: StrapiImageFormats;
   height: number;

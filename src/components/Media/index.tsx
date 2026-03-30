@@ -1,7 +1,7 @@
 "use client";
 
 import { ParsedMediaType } from "@/utils/parseStrapiMedia";
-import Image from "next/image";
+import { StrapiImage } from "../StrapiImage";
 
 interface MediaProps {
   media: ParsedMediaType;
@@ -12,8 +12,7 @@ export const Media = ({ media }: MediaProps) => {
   const { type } = media;
 
   if (type === "image") {
-    const { url, alternativeText, width, height } = media;
-    return <Image src={url} alt={alternativeText} width={width} height={height} quality={75} priority sizes="(max-width: 768px) 100vw, 800px" />;
+    return <StrapiImage image={media}></StrapiImage>;
   }
 
   if (type === "video") {

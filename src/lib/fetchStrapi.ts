@@ -4,17 +4,13 @@ import { StrapiResponse } from "@/types/strapi";
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN;
 
-export function getStrapiURL(path: string = "") {
+export const getStrapiURL = (path: string = "") => {
   const baseUrl = STRAPI_URL?.replace(/\/$/, "") || "http://127.0.0.1:1337";
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
   return `${baseUrl}${cleanPath}`;
-}
+};
 
-export async function fetchStrapi<T>(
-  path: string,
-  urlParamsObject: Record<string, unknown> = {},
-  options: RequestInit = {},
-): Promise<StrapiResponse<T>> {
+export const fetchStrapi = async <T>(path: string, urlParamsObject: Record<string, unknown> = {}, options: RequestInit = {}): Promise<StrapiResponse<T>> => {
   const mergedOptions: RequestInit = {
     headers: {
       Accept: "application/json",
@@ -23,7 +19,7 @@ export async function fetchStrapi<T>(
       ...(options.headers || {}),
     },
     next: {
-      revalidate: 60,
+      revalidate: 3600,
       ...(options as RequestInit).next,
     },
     ...options,
@@ -34,9 +30,7 @@ export async function fetchStrapi<T>(
     arrayFormat: "brackets",
   });
 
-  const requestUrl = getStrapiURL(
-    `/api${path}${queryString ? `?${queryString}` : ""}`,
-  );
+  const requestUrl = getStrapiURL(`/api${path}${queryString ? `?${queryString}` : ""}`);
 
   try {
     const response = await fetch(requestUrl, mergedOptions);
@@ -54,4 +48,4 @@ export async function fetchStrapi<T>(
     console.error("Fetch API Error:", errorMessage);
     throw new Error(`${errorMessage} (URL: ${requestUrl})`);
   }
-}
+};

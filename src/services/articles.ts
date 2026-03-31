@@ -8,12 +8,10 @@ const populateArticle = {
   blocks: { populate: "*" },
 };
 
-export async function getArticles(
-  locale: string,
-): Promise<StrapiResponse<Article[]>> {
+export const getArticles = async (locale: string): Promise<StrapiResponse<Article[]>> => {
   return fetchStrapi<Article[]>("/articles", {
     populate: populateArticle,
     locale,
     sort: ["createdAt:desc"],
   });
-}
+};

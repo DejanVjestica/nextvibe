@@ -18,7 +18,7 @@ export const parseAbout = (raw: About): ParsedAbout => ({
   blocks: parseStrapiBlocks(raw.blocks),
 });
 
-export async function getAbout(locale: string): Promise<ParsedAbout | null> {
+export const getAbout = async (locale: string): Promise<ParsedAbout | null> => {
   const res = await fetchStrapi<About>("/about", {
     populate,
     locale,
@@ -29,4 +29,4 @@ export async function getAbout(locale: string): Promise<ParsedAbout | null> {
   if (!res?.data && !title && !blocks?.length) return null;
 
   return parseAbout(res.data);
-}
+};

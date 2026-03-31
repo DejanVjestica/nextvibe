@@ -78,6 +78,7 @@ pnpm lint
 ```sh
 NEXT_PUBLIC_STRAPI_URL=https://your-project.strapiapp.com
 NEXT_PUBLIC_STRAPI_MEDIA_URL=https://your-project.media.strapiapp.com
+NEXT_PUBLIC_SITE_URL=https://your-project.com
 STRAPI_API_TOKEN=
 ```
 

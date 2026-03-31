@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     metadataBase,
     title,
     description,
-    authors: [{ name: "Software Defined Defense", url: metadataBase }, { name: "Dejan Vjestica" }],
+    authors: [{ name: "NextVibe", url: metadataBase }, { name: "Dejan Vjestica" }],
     openGraph: {
       title,
       description,
@@ -48,9 +48,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     other: {
       "google-site-verification": "TACl-_054sHbqAorEk_zLqODN4vohWKcIw3RFBUE-84",
     },
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        en: "/en",
+        de: "/de",
+        "x-default": "/de",
+      },
+    },
   };
 }
-<meta name="google-site-verification" content="TACl-_054sHbqAorEk_zLqODN4vohWKcIw3RFBUE-84" />;
+
 export async function generateStaticParams() {
   return i18nConfig.locales.map((locale) => ({ locale }));
 }

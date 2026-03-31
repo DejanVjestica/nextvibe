@@ -1,0 +1,7 @@
+# Allow all bots (general)
+User-agent: *
+Allow: /
+
+# Explicitly allow Facebook crawler
+User-agent: facebookexternalhit
+Allow: /

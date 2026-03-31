@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const global = await getGlobal(locale);
-  const baseUrl = (process.env.NEXT_PUBLIC_STRAPI_URL ?? process.env.NODE_ENV === "development") ? `http://localhost:${process.env.PORT || 3000}` : undefined;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? (process.env.NODE_ENV === "development" ? `http://localhost:${process.env.PORT || 3000}` : undefined);
 
   if (!baseUrl) {
     throw new Error("NEXT_PUBLIC_SITE_URL is not defined and NODE_ENV is not development.");

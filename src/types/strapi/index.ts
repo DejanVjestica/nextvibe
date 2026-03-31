@@ -1,7 +1,7 @@
 import { StrapiMedia } from "@/types/strapi/media";
-import { ApiArticleArticle, ApiAuthorAuthor, ApiCategoryCategory, ApiAboutAbout } from "@/types/strapi/generated/contentTypes";
+import { ApiArticleArticle, ApiAuthorAuthor, ApiCategoryCategory, ApiAboutAbout, ApiGlobalGlobal } from "@/types/strapi/generated/contentTypes";
 
-import { SharedMedia, SharedQuote, SharedRichText, SharedSlider } from "./generated/components";
+import { SharedMedia, SharedQuote, SharedRichText, SharedSlider, SharedSeo } from "./generated/components";
 
 export type GetAttributes<T> = T extends { attributes: infer A } ? A : never;
 
@@ -18,6 +18,8 @@ export type BlockItem<T, C extends string> = GetAttributes<T> & {
 export type Article = StrapiItem<ApiArticleArticle>;
 export type Author = StrapiItem<ApiAuthorAuthor>;
 export type Category = StrapiItem<ApiCategoryCategory>;
+
+export type Global = StrapiItem<ApiGlobalGlobal>;
 export type About = Omit<StrapiItem<ApiAboutAbout>, "blocks"> & {
   blocks: ContentBlock[];
 };
@@ -29,6 +31,7 @@ export type ComponentMedia = Omit<BlockItem<SharedMedia, "shared.media">, "file"
 export type ComponentQuote = BlockItem<SharedQuote, "shared.quote">;
 export type ComponentRichText = BlockItem<SharedRichText, "shared.rich-text">;
 export type ComponentSlider = BlockItem<SharedSlider, "shared.slider">;
+export type ComponentCeo = BlockItem<SharedSeo, "shared.ceo">;
 
 export type ContentBlock = ComponentMedia | ComponentQuote | ComponentRichText | ComponentSlider;
 

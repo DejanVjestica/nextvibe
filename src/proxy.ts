@@ -2,6 +2,12 @@ import { NextResponse, type NextRequest } from "next/server";
 import { i18nConfig, Locale } from "./i18n-config";
 
 export function proxy(request: NextRequest) {
+  const userAgent = request.headers.get("user-agent") || "";
+
+  if (userAgent.includes("facebookexternalhit") || userAgent.includes("Twitterbot") || userAgent.includes("LinkedInBot") || userAgent.includes("Slackbot")) {
+    return NextResponse.next();
+  }
+
   const { pathname } = request.nextUrl;
   const { locales, defaultLocale } = i18nConfig;
 

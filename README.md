@@ -1,18 +1,43 @@
-# NextVibe
+<div align="center">
 
-![Next.js](https://img.shields.io/badge/next.js-16.1.6-black)
-![React](https://img.shields.io/badge/react-19.2.3-blue)
-![Tailwind](https://img.shields.io/badge/tailwind-4-38b2ac)
-![Strapi](https://img.shields.io/badge/cms-strapi-blue)
-![pnpm](https://img.shields.io/badge/pnpm-10.33.0-blue)
-![Vercel](https://img.shields.io/badge/deployed-vercel-black)
-![License](https://img.shields.io/badge/license-MIT-blue)
+<img src="public/nextvibe-og-image.png" alt="NextVibe Logo" height="120" />
 
-> A modern Next.js application powered by Strapi CMS with responsive image optimization and automated CI/CD via Vercel.
+<h1>NextVibe</h1>
 
-🔗 **Live Demo:** https://nextvibe-hazel.vercel.app/
+<p>
+  A modern <strong>Next.js</strong> application powered by <strong>Strapi CMS</strong>, 
+  featuring responsive design, optimized images, and seamless CI/CD with Vercel.
+</p>
 
----
+<p>
+  <a href="https://nextjs.org">
+    <img src="https://img.shields.io/badge/next.js-16.1.6-black" />
+  </a>
+  <a href="https://react.dev">
+    <img src="https://img.shields.io/badge/react-19.2.3-blue" />
+  </a>
+  <a href="https://tailwindcss.com">
+    <img src="https://img.shields.io/badge/tailwind-4-38b2ac" />
+  </a>
+  <a href="https://strapi.io">
+    <img src="https://img.shields.io/badge/cms-strapi-blue" />
+  </a>
+  <a href="https://pnpm.io">
+    <img src="https://img.shields.io/badge/pnpm-10.33.0-blue" />
+  </a>
+  <a href="https://vercel.com">
+    <img src="https://img.shields.io/badge/deployed-vercel-black" />
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-blue" />
+  </a>
+</p>
+
+<p>
+  <a href="https://nextvibe-hazel.vercel.app/"><strong>Live Demo</strong></a> 
+</p>
+
+</div>
 
 ## Table of Contents
 

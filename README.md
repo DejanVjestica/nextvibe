@@ -4,6 +4,7 @@
 ![React](https://img.shields.io/badge/react-19.2.3-blue)
 ![Tailwind](https://img.shields.io/badge/tailwind-4-38b2ac)
 ![Strapi](https://img.shields.io/badge/cms-strapi-blue)
+![pnpm](https://img.shields.io/badge/pnpm-10.33.0-blue)
 ![Vercel](https://img.shields.io/badge/deployed-vercel-black)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
@@ -59,15 +60,16 @@ pnpm lint
 
 ## Tech Stack & Tooling
 
-| Category   | Tool                       |
-| ---------- | -------------------------- |
-| Framework  | Next.js (App Router)       |
-| CMS        | Strapi (Cloud)             |
-| Language   | TypeScript                 |
-| Styling    | Tailwind CSS               |
-| Images     | next/image + custom loader |
-| Deployment | Vercel                     |
-| Content    | ReactMarkdown              |
+| Category        | Tool                       |
+| --------------- | -------------------------- |
+| Framework       | Next.js (App Router)       |
+| CMS             | Strapi (Cloud)             |
+| Language        | TypeScript                 |
+| Styling         | Tailwind CSS               |
+| Package Manager | pnpm@10.33.0               |
+| Images          | next/image + custom loader |
+| Deployment      | Vercel                     |
+| Content         | ReactMarkdown              |
 
 ---
 
@@ -119,8 +121,8 @@ Images are handled using `next/image` with a custom Strapi loader.
 
 - Supports Strapi formats (`thumbnail`, `small`, `medium`, `large`)
 - Works with both:
-  - Local development (`localhost:1337`)
-  - Strapi Cloud (`*.media.strapiapp.com`)
+    - Local development (`localhost:1337`)
+    - Strapi Cloud (`*.media.strapiapp.com`)
 
 - Responsive images via `srcset` and `sizes`
 - Lazy loading by default

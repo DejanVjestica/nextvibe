@@ -9,7 +9,8 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "eslint",
-		"test": "vitest"
+		"test": "vitest",
+		"format": "prettier --write \"src/**/*.{ts,tsx,css,md}\""
 	},
 	"dependencies": {
 		"next": "16.1.6",
@@ -37,6 +38,7 @@
 		"eslint": "^9",
 		"eslint-config-next": "16.1.6",
 		"jsdom": "^29.0.2",
+		"prettier": "^3.8.1",
 		"tailwindcss": "^4",
 		"typescript": "^5",
 		"vite-tsconfig-paths": "^6.1.1",

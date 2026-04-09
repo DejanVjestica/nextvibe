@@ -200,9 +200,9 @@ Images are handled using `next/image` with a custom Strapi loader.
 
 ### Testing & Quality
 
-- [ ] Unit tests with Jest
+- [x] Unit tests with Vitest
 - [ ] E2E tests with Playwright or Cypress
-- [ ] SEO optimization and meta tags
+- [x] SEO optimization and meta tags
 
 ### Deployment & CI/CD
 

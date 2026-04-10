@@ -1,5 +1,3 @@
-'use client';
-
 import { ThemeProvider } from 'next-themes';
 interface ProviderProps {
 	children: React.ReactNode;

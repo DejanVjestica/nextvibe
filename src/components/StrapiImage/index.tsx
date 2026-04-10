@@ -1,5 +1,3 @@
-'use client';
-
 import { ParsedMediaImage } from '@/utils/parse-strapi-media';
 import Image from 'next/image';
 

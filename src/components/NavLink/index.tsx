@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 
 interface NavLinkProps {
@@ -10,7 +8,7 @@ interface NavLinkProps {
 }
 
 export const NavLink = ({ label, ariaLabel, href, className }: NavLinkProps) => {
-	const styles = `${className ? className : ''} cursor-pointer p-2 transition-colors text-foreground hover:text-primary`;
+	const styles = `${className ? className + ' ' : ''}cursor-pointer p-2 transition-colors text-foreground hover:text-primary`;
 
 	return (
 		<>

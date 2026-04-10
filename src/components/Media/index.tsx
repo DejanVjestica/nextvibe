@@ -1,5 +1,3 @@
-'use client';
-
 import { ParsedMediaType } from '@/utils/parse-strapi-media';
 import { StrapiImage } from '../StrapiImage';
 

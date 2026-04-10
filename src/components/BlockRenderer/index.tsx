@@ -1,5 +1,3 @@
-'use client';
-
 import { ParsedBlockType } from '@/utils/parse-strapi-blocks';
 import { Media } from '../Media';
 import { ParsedMediaType } from '@/utils/parse-strapi-media';

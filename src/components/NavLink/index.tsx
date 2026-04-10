@@ -13,7 +13,7 @@ export const NavLink = ({ label, ariaLabel, href, className }: NavLinkProps) => 
 	return (
 		<>
 			<Link href={href} className={styles} aria-label={ariaLabel}>
-				<span>{label}</span>
+				{label}
 			</Link>
 		</>
 	);

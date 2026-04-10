@@ -1,5 +1,5 @@
 import { Header } from '@/components/Header';
-import { i18nConfig } from '@/i18n-config';
+import { i18nConfig, Locale } from '@/i18n-config';
 import { getAlternateLanguages } from '@/lib/i18n-utils';
 import { getGlobal } from '@/services/global';
 import { Metadata } from 'next';
@@ -89,17 +89,17 @@ export default async function LocaleLayout({
 	params,
 }: {
 	children: React.ReactNode;
-	params: Promise<{ locale: string }>;
+	params: Promise<{ locale: Locale }>;
 }) {
 	const { locale } = await params;
 
-	if (!i18nConfig.locales.includes(locale as 'de' | 'en')) {
+	if (!i18nConfig.locales.includes(locale)) {
 		notFound();
 	}
 
 	return (
 		<>
-			<Header></Header>
+			<Header locale={locale}></Header>
 			{children}
 		</>
 	);

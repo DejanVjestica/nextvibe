@@ -1,14 +1,19 @@
+import { Locale } from '@/i18n-config';
 import { HomeButton } from '../HomeButton';
 import { MainNav } from '../MainNav';
 import { ThemeSwitcher } from '../ThemeSwitcher';
 
-export const Header = () => {
+interface HeaderProps {
+	locale: Locale;
+}
+
+export const Header = ({ locale }: HeaderProps) => {
 	return (
 		<header className="bg-second flex justify-between px-4">
-			<HomeButton></HomeButton>
+			<HomeButton locale={locale}></HomeButton>
 			<div className="flex">
-				<MainNav></MainNav>
-				<ThemeSwitcher></ThemeSwitcher>
+				<MainNav locale={locale}></MainNav>
+				<ThemeSwitcher locale={locale}></ThemeSwitcher>
 			</div>
 		</header>
 	);

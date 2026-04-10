@@ -1,19 +1,16 @@
 'use client';
-
-import { Locale } from '@/i18n-config';
+import { i18nConfig, Locale } from '@/i18n-config';
 import { getLocalizedPath } from '@/lib/i18n-utils';
-import { useParams, usePathname } from 'next/navigation';
 import { NavLink } from '../NavLink';
+import { usePathname } from 'next/navigation';
+import { useCurrentLocale } from '@/hooks/useCurrentLocale';
 
 export const LanguageSwitcher = () => {
+	const { defaultLocale } = i18nConfig;
 	const pathname = usePathname();
-
-	const params = useParams();
-
-	const currentLocale: Locale = params.locale as Locale;
+	const currentLocale = useCurrentLocale();
 	const nextLocale: Locale = currentLocale === 'en' ? 'de' : 'en';
-
-	const ariaLabel = currentLocale === 'en' ? 'Zu Deutsch wechseln' : 'Switch to English';
+	const ariaLabel = currentLocale === defaultLocale ? 'Switch to English' : 'Zu Deutsch wechseln';
 
 	return <NavLink href={getLocalizedPath(pathname, nextLocale)} label={nextLocale} ariaLabel={ariaLabel}></NavLink>;
 };

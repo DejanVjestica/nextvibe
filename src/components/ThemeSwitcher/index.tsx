@@ -2,15 +2,31 @@
 
 import { i18nConfig, Locale } from '@/i18n-config';
 import { useTheme } from 'next-themes';
-import { useParams } from 'next/navigation';
 import { useEffect, useEffectEvent, useState } from 'react';
 
-export const ThemeSwitcher = () => {
+const labels = {
+	de: {
+		dark: 'hell',
+		light: 'dunkel',
+		aria: {
+			dark: 'Zum hellen Design wechseln',
+			light: 'Zum dunklen Design wechseln',
+		},
+	},
+	en: {
+		dark: 'light',
+		light: 'dark',
+		aria: { dark: 'Switch to light theme', light: 'Switch to dark theme' },
+	},
+};
+
+interface ThemeSwitcherProps {
+	locale: Locale;
+}
+
+export const ThemeSwitcher = ({ locale }: ThemeSwitcherProps) => {
 	const [mounted, setMounted] = useState(false);
 	const { setTheme, resolvedTheme } = useTheme();
-	const params = useParams();
-	const currentLocale: Locale = params.locale as Locale;
-	const { defaultLocale } = i18nConfig;
 
 	const markMounted = useEffectEvent(() => setMounted(true));
 
@@ -22,23 +38,7 @@ export const ThemeSwitcher = () => {
 		return <div className="w-15"></div>;
 	}
 
-	const labels = {
-		de: {
-			dark: 'hell',
-			light: 'dunkel',
-			aria: {
-				dark: 'Zum hellen Design wechseln',
-				light: 'Zum dunklen Design wechseln',
-			},
-		},
-		en: {
-			dark: 'light',
-			light: 'dark',
-			aria: { dark: 'Switch to light theme', light: 'Switch to dark theme' },
-		},
-	};
-
-	const localeKey = currentLocale === defaultLocale ? 'de' : 'en';
+	const localeKey = locale === i18nConfig.defaultLocale ? 'de' : 'en';
 	const themeKey: 'light' | 'dark' = resolvedTheme as 'light' | 'dark';
 
 	const label = labels[localeKey][themeKey];

@@ -1,5 +1,5 @@
 'use client';
-import { usePathname } from 'next/navigation';
+import { useCurrentLocale } from '@/hooks/useCurrentLocale';
 
 const i18n = {
 	en: {
@@ -13,13 +13,12 @@ const i18n = {
 };
 
 export const NotFoundContent = () => {
-	const pathname = usePathname();
-	const locale = pathname?.startsWith('/en') ? 'en' : 'de';
+	const currentLocale = useCurrentLocale();
 
 	return (
 		<>
-			<h2 className="text-2xl font-bold">{i18n[locale].title}</h2>
-			<p className="mt-4 text-gray-600">{i18n[locale].description}</p>
+			<h2 className="text-2xl font-bold">{i18n[currentLocale].title}</h2>
+			<p className="mt-4 text-gray-600">{i18n[currentLocale].description}</p>
 		</>
 	);
 };

@@ -1,11 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import {
-	describe,
-	it,
-	expect,
-	vi,
-	beforeEach,
-} from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import AboutPage from './page'; // Adjust path to your page file
 import { getAbout } from '@/services/about';
 import { notFound } from 'next/navigation';
@@ -24,17 +18,10 @@ vi.mock('@/services/about', () => ({
 }));
 
 vi.mock('@/components/BlockRenderer', () => ({
-	BlockRenderer: ({
-		blocks,
-	}: {
-		blocks: ParsedBlockType[];
-	}) => (
+	BlockRenderer: ({ blocks }: { blocks: ParsedBlockType[] }) => (
 		<div data-testid="block-renderer-mock">
 			{blocks.map((block, i) => (
-				<div
-					key={i}
-					data-testid={`block-${block.type}`}
-				>
+				<div key={i} data-testid={`block-${block.type}`}>
 					{block.type}
 				</div>
 			))}
@@ -96,18 +83,13 @@ describe('AboutPage Server Component', () => {
 				name: 'Our Story',
 			}),
 		).toBeInTheDocument();
-		expect(
-			screen.getByTestId('block-renderer-mock')
-				.children,
-		).toHaveLength(3);
+		expect(screen.getByTestId('block-renderer-mock').children).toHaveLength(3);
 	});
 
 	it('triggers the Next.js notFound boundary when data is missing', async () => {
 		vi.mocked(getAbout).mockResolvedValue(null);
 
-		await expect(AboutPage({ params })).rejects.toThrow(
-			'NEXT_NOT_FOUND',
-		);
+		await expect(AboutPage({ params })).rejects.toThrow('NEXT_NOT_FOUND');
 
 		expect(notFound).toHaveBeenCalled();
 	});
@@ -146,10 +128,7 @@ describe('AboutPage Server Component', () => {
 			}),
 		).toBeNull();
 
-		expect(
-			screen.getByTestId('block-renderer-mock')
-				.children,
-		).toHaveLength(2);
+		expect(screen.getByTestId('block-renderer-mock').children).toHaveLength(2);
 	});
 
 	it('does not render blocks if the blocks are empty array', async () => {
@@ -169,8 +148,6 @@ describe('AboutPage Server Component', () => {
 			}),
 		).toBeInTheDocument();
 
-		expect(
-			screen.getByTestId('block-renderer-mock'),
-		).toBeEmptyDOMElement();
+		expect(screen.getByTestId('block-renderer-mock')).toBeEmptyDOMElement();
 	});
 });

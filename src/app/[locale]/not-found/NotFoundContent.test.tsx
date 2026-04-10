@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import { usePathname } from 'next/navigation';
 import { NotFoundContent } from './NotFoundContent';
+import { useCurrentLocale } from '@/hooks/useCurrentLocale';
 
-vi.mock('next/navigation', () => ({
-	usePathname: vi.fn(),
+vi.mock('@/hooks/useCurrentLocale', () => ({
+	useCurrentLocale: vi.fn(),
 }));
 
 describe('NotFoundContent', () => {
@@ -12,7 +12,7 @@ describe('NotFoundContent', () => {
 	});
 
 	it('renders English text when pathname starts with /en', () => {
-		vi.mocked(usePathname).mockReturnValue('/en');
+		vi.mocked(useCurrentLocale).mockReturnValue('en');
 
 		render(<NotFoundContent />);
 
@@ -20,8 +20,8 @@ describe('NotFoundContent', () => {
 		expect(screen.getByText(/Sorry, the content you are looking for does not exist/)).toBeInTheDocument();
 	});
 
-	it('renders German text when pathname starts with /', () => {
-		vi.mocked(usePathname).mockReturnValue('/');
+	it('renders German text when pathname starts with /de', () => {
+		vi.mocked(useCurrentLocale).mockReturnValue('de');
 
 		render(<NotFoundContent />);
 

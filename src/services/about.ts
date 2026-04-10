@@ -5,7 +5,7 @@ import { ParsedBlockType, parseStrapiBlocks } from '@/utils/parse-strapi-blocks'
 export type ParsedAbout = {
 	id: number;
 	title: string | null;
-	blocks: ParsedBlockType[];
+	blocks: ParsedBlockType[] | null;
 };
 
 const populate = {
@@ -15,7 +15,7 @@ const populate = {
 export const parseAbout = (raw: About): ParsedAbout => ({
 	id: raw.id,
 	title: raw.title ?? null,
-	blocks: parseStrapiBlocks(raw.blocks),
+	blocks: parseStrapiBlocks(raw.blocks).length > 0 ? parseStrapiBlocks(raw.blocks) : null,
 });
 
 export const getAbout = async (locale: string): Promise<ParsedAbout | null> => {
@@ -24,9 +24,11 @@ export const getAbout = async (locale: string): Promise<ParsedAbout | null> => {
 		locale,
 	});
 
-	const { title, blocks } = res.data;
+	const { id, title, blocks } = parseAbout(res.data);
 
-	if (!res?.data && !title && !blocks?.length) return null;
+	if (!title && !blocks) {
+		return null;
+	}
 
-	return parseAbout(res.data);
+	return { id, title, blocks };
 };

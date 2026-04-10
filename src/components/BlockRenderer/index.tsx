@@ -10,7 +10,6 @@ interface BlockRendererProps {
 }
 
 export const BlockRenderer = ({ blocks }: BlockRendererProps) => {
-	if (!blocks) return;
 	return (
 		<>
 			{blocks &&

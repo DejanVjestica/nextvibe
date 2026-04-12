@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { LanguageSwitcher } from './index';
 import { usePathname } from 'next/navigation';
 import { useCurrentLocale } from '@/hooks/useCurrentLocale';

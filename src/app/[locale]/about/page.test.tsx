@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import AboutPage from './page'; // Adjust path to your page file
+import AboutPage from './page';
 import { getAbout } from '@/services/about';
 import { notFound } from 'next/navigation';
 import { ParsedBlockType } from '@/utils/parse-strapi-blocks';

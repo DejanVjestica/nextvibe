@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { ParsedBlockType } from '@/utils/parse-strapi-blocks';
 import { BlockRenderer } from '@/components/BlockRenderer';
 

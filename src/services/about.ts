@@ -1,6 +1,6 @@
-import { fetchStrapi } from '@/lib/fetch-strapi';
+import { fetchStrapi } from '@/lib/strapi/fetch';
 import { About } from '@/types/strapi';
-import { ParsedBlockType, parseStrapiBlocks } from '@/utils/parse-strapi-blocks';
+import { ParsedBlockType, parseBlocks } from '@/lib/strapi/parse-blocks';
 
 export type ParsedAbout = {
 	id: number;
@@ -15,7 +15,7 @@ const populate = {
 export const parseAbout = (raw: About): ParsedAbout => ({
 	id: raw.id,
 	title: raw.title ?? null,
-	blocks: parseStrapiBlocks(raw.blocks).length > 0 ? parseStrapiBlocks(raw.blocks) : null,
+	blocks: parseBlocks(raw.blocks).length > 0 ? parseBlocks(raw.blocks) : null,
 });
 
 export const getAbout = async (locale: string): Promise<ParsedAbout | null> => {

@@ -1,4 +1,4 @@
-import { fetchStrapi } from '@/lib/fetch-strapi';
+import { fetchStrapi } from '@/lib/strapi/fetch';
 import { ComponentCeo, Global } from '@/types/strapi';
 import { cache } from 'react';
 

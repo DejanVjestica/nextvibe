@@ -2,9 +2,9 @@ import { render, screen } from '@testing-library/react';
 import AboutPage from './page';
 import { getAbout } from '@/services/about';
 import { notFound } from 'next/navigation';
-import { ParsedBlockType } from '@/utils/parse-strapi-blocks';
+import { ParsedBlockType } from '@/lib/strapi/parse-blocks';
 import { Locale } from '@/i18n-config';
-import { mockImageFormats } from '@/tests/mocks/strapi-image.mock';
+import { mockImageFormats } from '@/lib/strapi/mocks/image.mock';
 
 vi.mock('next/navigation', () => ({
 	notFound: vi.fn(() => {

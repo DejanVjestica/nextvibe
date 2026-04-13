@@ -26,7 +26,7 @@ type ParsedMediaVideo = {
 
 export type ParsedMediaType = ParsedMediaImage | ParsedMediaApplication | ParsedMediaVideo;
 
-export const parseStrapiMedia = (media: StrapiMedia): ParsedMediaType | null => {
+export const parseMedia = (media: StrapiMedia): ParsedMediaType | null => {
 	const { url, width, height, alternativeText, mime, name, formats } = media;
 	const fullUrl = url.startsWith('http') ? url : `${strapiUrl()}${url}`;
 

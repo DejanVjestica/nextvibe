@@ -1,6 +1,6 @@
 import { Header } from '@/components/Header';
 import { i18nConfig, Locale } from '@/i18n-config';
-import { getAlternateLanguages } from '@/lib/i18n-utils';
+import { getAlternateLanguages } from '@/lib/i18n/get-alternate-languages';
 import { getGlobal } from '@/services/global';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';

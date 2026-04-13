@@ -1,4 +1,4 @@
-import { getLocalizedPath } from '@/lib/i18n-utils';
+import { getLocalizedPath } from '@/lib/i18n/get-localized-path';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 import { NavLink } from '../NavLink';
 import { Locale } from '@/i18n-config';

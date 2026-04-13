@@ -1,6 +1,6 @@
 import qs from 'qs';
 import { StrapiResponse } from '@/types/strapi';
-import { strapiUrl } from './config/strapi-url';
+import { strapiUrl } from '../config/strapi-url';
 const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN;
 
 const getStrapiURL = (path: string = '') => {

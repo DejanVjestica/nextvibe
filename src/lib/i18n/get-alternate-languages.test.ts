@@ -1,20 +1,10 @@
-import { getLocalizedPath, getAlternateLanguages } from './i18n-utils';
+import { getAlternateLanguages } from './get-alternate-languages';
 
 vi.mock('./config/site-url', () => ({
 	siteUrl: vi.fn(() => 'http://localhost:3000'),
 }));
 
 describe('i18n-utils', () => {
-	describe('getLocalizedPath', () => {
-		it('should return the path without prefix de', () => {
-			expect(getLocalizedPath('/en/about', 'de')).toBe('/about');
-		});
-
-		it('should return the path with prefix en', () => {
-			expect(getLocalizedPath('/about', 'en')).toBe('/en/about');
-		});
-	});
-
 	describe('getAlternateLanguages', () => {
 		it('should return the correct alternate languages object', () => {
 			expect(getAlternateLanguages('about')).toEqual({

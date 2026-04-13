@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getAlternateLanguages } from '@/lib/i18n-utils';
+import { getAlternateLanguages } from '@/lib/i18n/get-alternate-languages';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
 	const { locale } = await params;

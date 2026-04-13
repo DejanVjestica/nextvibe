@@ -1,4 +1,4 @@
-import { fetchStrapi } from '@/lib/fetch-strapi';
+import { fetchStrapi } from '@/lib/strapi/fetch';
 import { StrapiResponse, Article } from '@/types/strapi';
 
 const populateArticle = {

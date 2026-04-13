@@ -1,6 +1,6 @@
-import { ParsedBlockType } from '@/utils/parse-strapi-blocks';
+import { ParsedBlockType } from '@/lib/strapi/parse-blocks';
 import { Media } from '../Media';
-import { ParsedMediaType } from '@/utils/parse-strapi-media';
+import { ParsedMediaType } from '@/lib/strapi/parse-media';
 import { RichText } from '../RichText';
 
 interface BlockRendererProps {

@@ -1,4 +1,4 @@
-import { ParsedMediaImage } from '@/utils/parse-strapi-media';
+import { ParsedMediaImage } from '@/lib/strapi/parse-media';
 import Image from 'next/image';
 
 interface StrapiImageProps {

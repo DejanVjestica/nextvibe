@@ -8,6 +8,7 @@ export const getLocalizedPath = (pathname: string, newLocale: string) => {
 	if (locales.includes(segments[0] as Locale)) {
 		segments.shift();
 	}
+
 	let newPath: string;
 
 	if (newLocale === defaultLocale && !prefixDefault) {
@@ -20,7 +21,9 @@ export const getLocalizedPath = (pathname: string, newLocale: string) => {
 };
 
 export const getAlternateLanguages = (slug: string = '') => {
-	const slugStr = slug ? `/${slug}` : '';
+	const cleanSlug = slug.replace(/^\/+|\/+$/g, '');
+	const slugStr = cleanSlug ? `/${cleanSlug}` : '';
+
 	return Object.fromEntries(
 		i18nConfig.locales.map((locale) => [
 			locale,

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { LanguageSwitcher } from './index';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher/index';
 import { usePathname } from 'next/navigation';
 import { useCurrentLocale } from '@/hooks/useCurrentLocale';
 

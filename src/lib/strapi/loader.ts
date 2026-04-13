@@ -1,5 +1,5 @@
 import { ImageLoader, ImageLoaderProps } from 'next/image';
-import { strapiMediaUrl } from '../config/strapi-media-url';
+import { strapiMediaUrl } from '@/lib/config/strapi-media-url';
 
 const strapiLoader: ImageLoader = ({ src, width, quality }: ImageLoaderProps) => {
 	const mediaUrl = strapiMediaUrl();

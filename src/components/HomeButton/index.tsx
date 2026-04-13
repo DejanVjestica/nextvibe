@@ -1,6 +1,6 @@
 import { i18nConfig, Locale } from '@/i18n-config';
 import { getLocalizedPath } from '@/lib/i18n/get-localized-path';
-import { NavLink } from '../NavLink';
+import { NavLink } from '@/components/NavLink';
 
 interface HomeButtonProps {
 	locale: Locale;

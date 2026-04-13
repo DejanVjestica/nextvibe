@@ -1,7 +1,7 @@
 import { Locale } from '@/i18n-config';
-import { HomeButton } from '../HomeButton';
-import { MainNav } from '../MainNav';
-import { ThemeSwitcher } from '../ThemeSwitcher';
+import { HomeButton } from '@/components/HomeButton';
+import { MainNav } from '@/components/MainNav';
+import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 
 interface HeaderProps {
 	locale: Locale;

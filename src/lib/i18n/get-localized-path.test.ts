@@ -1,8 +1,4 @@
-import { getLocalizedPath } from './get-localized-path';
-
-vi.mock('./config/site-url', () => ({
-	siteUrl: vi.fn(() => 'http://localhost:3000'),
-}));
+import { getLocalizedPath } from '@/lib/i18n/get-localized-path';
 
 describe('i18n-utils', () => {
 	describe('getLocalizedPath', () => {

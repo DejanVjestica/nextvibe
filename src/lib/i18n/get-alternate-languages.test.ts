@@ -1,6 +1,6 @@
-import { getAlternateLanguages } from './get-alternate-languages';
+import { getAlternateLanguages } from '@/lib/i18n/get-alternate-languages';
 
-vi.mock('./config/site-url', () => ({
+vi.mock('@/lib/config/site-url', () => ({
 	siteUrl: vi.fn(() => 'http://localhost:3000'),
 }));
 

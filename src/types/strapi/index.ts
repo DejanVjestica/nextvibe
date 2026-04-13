@@ -7,7 +7,7 @@ import {
 	ApiGlobalGlobal,
 } from '@/types/strapi/generated/contentTypes';
 
-import { SharedMedia, SharedQuote, SharedRichText, SharedSlider, SharedSeo } from './generated/components';
+import { SharedMedia, SharedQuote, SharedRichText, SharedSlider, SharedSeo } from '@/types/strapi/generated/components';
 
 export type GetAttributes<T> = T extends { attributes: infer A } ? A : never;
 

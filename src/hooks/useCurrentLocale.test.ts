@@ -2,7 +2,7 @@ vi.mock('next/navigation', () => ({
 	useParams: vi.fn(),
 }));
 
-import { useCurrentLocale } from './useCurrentLocale';
+import { useCurrentLocale } from '@/hooks/useCurrentLocale';
 import { useParams } from 'next/navigation';
 
 describe('useCurrentLocale Hook', () => {

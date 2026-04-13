@@ -1,7 +1,7 @@
 'use client';
 import { i18nConfig, Locale } from '@/i18n-config';
 import { getLocalizedPath } from '@/lib/i18n/get-localized-path';
-import { NavLink } from '../NavLink';
+import { NavLink } from '@/components/NavLink';
 import { usePathname } from 'next/navigation';
 import { useCurrentLocale } from '@/hooks/useCurrentLocale';
 

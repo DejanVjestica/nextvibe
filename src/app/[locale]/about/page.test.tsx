@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import AboutPage from './page';
+import AboutPage from '@/app/[locale]/about/page';
 import { getAbout } from '@/services/about';
 import { notFound } from 'next/navigation';
 import { ParsedBlockType } from '@/lib/strapi/parse-blocks';

@@ -1,5 +1,5 @@
 import { i18nConfig } from '@/i18n-config';
-import { siteUrl } from '../config/site-url';
+import { siteUrl } from '@/lib/config/site-url';
 
 export const getAlternateLanguages = (slug: string = '') => {
 	const cleanSlug = slug.replace(/^\/+|\/+$/g, '');

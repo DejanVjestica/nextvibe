@@ -1,6 +1,6 @@
 import { getLocalizedPath } from '@/lib/i18n/get-localized-path';
-import { LanguageSwitcher } from '../LanguageSwitcher';
-import { NavLink } from '../NavLink';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { NavLink } from '@/components/NavLink';
 import { Locale } from '@/i18n-config';
 
 interface MainNavProps {

@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { i18nConfig, Locale } from './i18n-config';
+import { i18nConfig, Locale } from '@/i18n-config';
 
 export function proxy(request: NextRequest) {
 	const { pathname } = request.nextUrl;

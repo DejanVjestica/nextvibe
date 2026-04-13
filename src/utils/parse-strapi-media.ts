@@ -28,7 +28,7 @@ export type ParsedMediaType = ParsedMediaImage | ParsedMediaApplication | Parsed
 
 export const parseStrapiMedia = (media: StrapiMedia): ParsedMediaType | null => {
 	const { url, width, height, alternativeText, mime, name, formats } = media;
-	const fullUrl = url.startsWith('http') ? url : `${strapiUrl().replace(/\/$/, '')}${url}`;
+	const fullUrl = url.startsWith('http') ? url : `${strapiUrl()}${url}`;
 
 	switch (mime.split('/').shift()) {
 		case 'image':

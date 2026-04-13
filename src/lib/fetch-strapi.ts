@@ -3,11 +3,11 @@ import { StrapiResponse } from '@/types/strapi';
 import { strapiUrl } from './config/strapi-url';
 const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN;
 
-export const getStrapiURL = (path: string = '') => {
-	const baseUrl = strapiUrl().replace(/\/$/, '');
+const getStrapiURL = (path: string = '') => {
 	const cleanPath = path.startsWith('/') ? path : `/${path}`;
-	return `${baseUrl}${cleanPath}`;
+	return `${strapiUrl()}${cleanPath}`;
 };
+
 export const fetchStrapi = async <T>(
 	path: string,
 	urlParamsObject: Record<string, unknown> = {},

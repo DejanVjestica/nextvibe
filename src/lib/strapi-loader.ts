@@ -13,7 +13,7 @@ const strapiLoader: ImageLoader = ({ src, width, quality }: ImageLoaderProps) =>
 	const directory = srcParts.join('/');
 
 	const finalPath = prefix ? `${directory}/${prefix}_${filename}?w=${width}&q=${quality || 75}` : path;
-	return `${mediaUrl.replace(/\/$/, '')}${finalPath}`;
+	return `${mediaUrl}${finalPath}`;
 };
 
 const imagePrefix = (width: number): string | null => {

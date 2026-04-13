@@ -5,6 +5,10 @@ vi.mock('@/lib/config/site-url', () => ({
 }));
 
 describe('i18n-utils', () => {
+	beforeEach(() => {
+		vi.clearAllMocks();
+	});
+
 	describe('getAlternateLanguages', () => {
 		it('should return the correct alternate languages object', () => {
 			expect(getAlternateLanguages('about')).toEqual({

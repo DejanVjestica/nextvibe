@@ -6,6 +6,10 @@ import { useCurrentLocale } from '@/hooks/useCurrentLocale';
 import { useParams } from 'next/navigation';
 
 describe('useCurrentLocale Hook', () => {
+	beforeEach(() => {
+		vi.clearAllMocks();
+	});
+
 	it('returns en from useParams', () => {
 		vi.mocked(useParams).mockReturnValue({ locale: 'en' });
 		const locale = useCurrentLocale();

@@ -1,38 +1,35 @@
 import qs from 'qs';
 import { StrapiResponse } from '@/types/strapi';
-import { strapiUrl } from '@/lib/config//strapi-url';
+import { strapiUrl } from '@/lib/config/strapi-url';
 const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN;
-
-const getStrapiURL = (path: string = '') => {
-	const cleanPath = path.startsWith('/') ? path : `/${path}`;
-	return `${strapiUrl()}${cleanPath}`;
-};
 
 export const fetchStrapi = async <T>(
 	path: string,
-	urlParamsObject: Record<string, unknown> = {},
+	query: Record<string, unknown> = {},
 	options: RequestInit = {},
 ): Promise<StrapiResponse<T>> => {
+	const { headers, next, ...restOptions } = options;
+
 	const mergedOptions: RequestInit = {
+		...restOptions,
 		headers: {
 			Accept: 'application/json',
 			'Content-Type': 'application/json',
+			...headers,
 			Authorization: `Bearer ${STRAPI_TOKEN}`,
-			...(options.headers || {}),
 		},
 		next: {
 			revalidate: 3600,
-			...(options as RequestInit).next,
+			...next,
 		},
-		...options,
 	};
 
-	const queryString = qs.stringify(urlParamsObject, {
+	const queryString = qs.stringify(query, {
 		encodeValuesOnly: true,
 		arrayFormat: 'brackets',
 	});
 
-	const requestUrl = getStrapiURL(`/api${path}${queryString ? `?${queryString}` : ''}`);
+	const requestUrl = `${strapiUrl()}/api${path}${queryString ? `?${queryString}` : ''}`;
 
 	try {
 		const response = await fetch(requestUrl, mergedOptions);

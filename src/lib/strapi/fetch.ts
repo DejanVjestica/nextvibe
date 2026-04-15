@@ -1,5 +1,5 @@
 import qs from 'qs';
-import { StrapiResponse } from '@/types/strapi';
+import { StrapiResponse } from '@/lib/strapi/types';
 import { strapiUrl } from '@/lib/config/strapi-url';
 const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN;
 

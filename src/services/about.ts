@@ -13,7 +13,13 @@ export const getAbout = async (locale: string): Promise<ParsedAbout | null> => {
 		locale,
 	});
 
-	if (!res.data.title && !res.data.blocks) return null;
+	const { id, title, blocks } = parseAbout(res.data);
 
-	return parseAbout(res.data);
+	if (!title && !blocks) return null;
+
+	return {
+		id,
+		title,
+		blocks,
+	};
 };

@@ -1,7 +1,7 @@
-import { ParsedBlockType } from '@/lib/strapi/parse-blocks';
 import { Media } from '@/components/Media';
-import { ParsedMediaType } from '@/lib/strapi/parse-media';
 import { RichText } from '@/components/RichText';
+import { ParsedBlockType } from '@/lib/strapi/types/parsed-blocks';
+import { ParsedMediaType } from '@/lib/strapi/types/parsed-media';
 
 interface BlockRendererProps {
 	blocks: ParsedBlockType[];

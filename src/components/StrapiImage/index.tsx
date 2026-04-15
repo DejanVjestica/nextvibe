@@ -1,4 +1,4 @@
-import { ParsedMediaImage } from '@/lib/strapi/parse-media';
+import { ParsedMediaImage } from '@/lib/strapi/types/parsed-media';
 import Image from 'next/image';
 
 interface StrapiImageProps {
@@ -12,7 +12,7 @@ export const StrapiImage = ({ image }: StrapiImageProps) => {
 	return (
 		<Image
 			src={url}
-			alt={alternativeText}
+			alt={alternativeText || 'Strapi Image'}
 			width={width}
 			height={height}
 			quality={75}

@@ -1,5 +1,5 @@
-import { ParsedMediaType } from '@/lib/strapi/parse-media';
 import { StrapiImage } from '@/components/StrapiImage';
+import { ParsedMediaType } from '@/lib/strapi/types/parsed-media';
 
 interface MediaProps {
 	media: ParsedMediaType;

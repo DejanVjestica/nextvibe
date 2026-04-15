@@ -1,5 +1,5 @@
 import { fetchStrapi } from '@/lib/strapi/fetch';
-import { StrapiResponse, Article } from '@/types/strapi';
+import { StrapiResponse, Article } from '@/lib/strapi/types';
 
 const populateArticle = {
 	author: { populate: '*' },

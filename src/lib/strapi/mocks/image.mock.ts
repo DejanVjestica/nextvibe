@@ -1,4 +1,4 @@
-import { StrapiImageFormat, StrapiImageFormats } from '@/types/strapi/media';
+import { StrapiImageFormat, StrapiImageFormats } from '@/lib/strapi/types/media';
 
 export const createMockFormat = (overrides: Partial<StrapiImageFormat> = {}): StrapiImageFormat => ({
 	name: 'mock-image.jpg',

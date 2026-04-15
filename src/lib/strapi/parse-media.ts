@@ -1,30 +1,6 @@
 import { strapiUrl } from '@/lib/config/strapi-url';
-import { StrapiMedia, StrapiImageFormats } from '@/types/strapi/media';
-
-export type ParsedMediaImage = {
-	alternativeText: string | '';
-	formats: StrapiImageFormats;
-	height: number;
-	type: 'image';
-	url: string;
-	width: number;
-};
-
-type ParsedMediaApplication = {
-	mime: string;
-	name: string;
-	type: 'application';
-	url: string;
-};
-
-type ParsedMediaVideo = {
-	alternativeText: string | '';
-	mime: string;
-	type: 'video';
-	url: string;
-};
-
-export type ParsedMediaType = ParsedMediaImage | ParsedMediaApplication | ParsedMediaVideo;
+import { StrapiMedia } from '@/lib/strapi/types/media';
+import { ParsedMediaImage, ParsedMediaApplication, ParsedMediaType, ParsedMediaVideo } from './types/parsed-media';
 
 export const parseMedia = (media: StrapiMedia): ParsedMediaType | null => {
 	const { url, width, height, alternativeText, mime, name, formats } = media;
@@ -39,21 +15,21 @@ export const parseMedia = (media: StrapiMedia): ParsedMediaType | null => {
 				type: 'image',
 				url,
 				width,
-			} as ParsedMediaImage;
+			} satisfies ParsedMediaImage;
 		case 'application':
 			return {
 				mime,
 				name,
 				type: 'application',
 				url: fullUrl,
-			} as ParsedMediaApplication;
+			} satisfies ParsedMediaApplication;
 		case 'video':
 			return {
 				alternativeText,
 				mime,
 				type: 'video',
 				url: fullUrl,
-			} as ParsedMediaVideo;
+			} satisfies ParsedMediaVideo;
 		default:
 			return null;
 	}

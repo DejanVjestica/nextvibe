@@ -1,13 +1,19 @@
-import { StrapiMedia } from '@/types/strapi/media';
+import { StrapiMedia } from '@/lib/strapi/types/media';
 import {
 	ApiArticleArticle,
 	ApiAuthorAuthor,
 	ApiCategoryCategory,
 	ApiAboutAbout,
 	ApiGlobalGlobal,
-} from '@/types/strapi/generated/contentTypes';
+} from '@/lib/strapi/types/generated/contentTypes';
 
-import { SharedMedia, SharedQuote, SharedRichText, SharedSlider, SharedSeo } from '@/types/strapi/generated/components';
+import {
+	SharedMedia,
+	SharedQuote,
+	SharedRichText,
+	SharedSlider,
+	SharedSeo,
+} from '@/lib/strapi/types/generated/components';
 
 export type GetAttributes<T> = T extends { attributes: infer A } ? A : never;
 

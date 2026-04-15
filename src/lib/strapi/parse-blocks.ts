@@ -1,32 +1,12 @@
-import { ContentBlock } from '@/types/strapi';
-import { ParsedMediaType, parseMedia } from '@/lib/strapi/parse-media';
-
-type ParsedBlockMedia = {
-	type: 'media';
-	id: number;
-	file: ParsedMediaType | null;
-};
-
-type ParsedBlockQuote = {
-	type: 'quote';
-	id: number;
-	title: string | null;
-	body: string | null;
-};
-
-type ParsedBlockSlider = {
-	type: 'slider';
-	id: number;
-	files: ParsedMediaType[] | null;
-};
-
-type ParsedBlockRichtext = {
-	type: 'rich-text';
-	id: number;
-	body: string | null;
-};
-
-export type ParsedBlockType = ParsedBlockMedia | ParsedBlockQuote | ParsedBlockSlider | ParsedBlockRichtext;
+import { ContentBlock } from '@/lib/strapi/types';
+import { parseMedia } from '@/lib/strapi/parse-media';
+import {
+	ParsedBlockMedia,
+	ParsedBlockQuote,
+	ParsedBlockRichtext,
+	ParsedBlockSlider,
+	ParsedBlockType,
+} from './types/parsed-blocks';
 
 const parseBlock = (block: ContentBlock): ParsedBlockType => {
 	switch (block.__component) {
@@ -35,26 +15,26 @@ const parseBlock = (block: ContentBlock): ParsedBlockType => {
 				type: 'media',
 				id: block.id,
 				file: block.file ? parseMedia(block.file) : null,
-			} as ParsedBlockMedia;
+			} satisfies ParsedBlockMedia;
 		case 'shared.quote':
 			return {
 				type: 'quote',
 				id: block.id,
 				title: block.title,
 				body: block.body,
-			} as ParsedBlockQuote;
+			} satisfies ParsedBlockQuote;
 		case 'shared.slider':
 			return {
 				type: 'slider',
 				id: block.id,
 				files: block.files,
-			} as ParsedBlockSlider;
+			} satisfies ParsedBlockSlider;
 		case 'shared.rich-text':
 			return {
 				type: 'rich-text',
 				id: block.id,
 				body: block.body,
-			} as ParsedBlockRichtext;
+			} satisfies ParsedBlockRichtext;
 	}
 };
 

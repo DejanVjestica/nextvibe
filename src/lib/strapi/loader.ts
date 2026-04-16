@@ -3,14 +3,17 @@ import { strapiMediaUrl } from '@/lib/config/strapi-media-url';
 
 const strapiLoader: ImageLoader = ({ src, width, quality }: ImageLoaderProps) => {
 	const path = src.startsWith('http') ? new URL(src).pathname : src;
+
 	const prefix = imagePrefix(width);
 
 	const srcParts = path.split('/');
 	const filename = srcParts.pop();
 	const directory = srcParts.join('/');
 
-	const finalPath = prefix ? `${directory}/${prefix}_${filename}?w=${width}&q=${quality || 75}` : path;
-	return `${strapiMediaUrl()}${finalPath}`;
+	const finalPath = prefix ? `${directory}/${prefix}_${filename}` : path;
+	const queryParams = `?w=${width}&q=${quality || 75}`;
+
+	return `${strapiMediaUrl()}${finalPath}${queryParams}`;
 };
 
 const imagePrefix = (width: number): string | null => {

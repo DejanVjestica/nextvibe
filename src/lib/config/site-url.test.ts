@@ -42,6 +42,6 @@ describe('siteUrl', () => {
 			NODE_ENV: 'production',
 		};
 
-		expect(siteUrl()).toBeUndefined();
+		expect(() => siteUrl()).toThrow('NEXT_PUBLIC_SITE_URL is not set in production environment');
 	});
 });

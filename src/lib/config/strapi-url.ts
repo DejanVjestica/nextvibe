@@ -1,3 +1,10 @@
 import { trimTrailingSlash } from '@/utils/trim-trailing-slash';
 
-export const strapiUrl = () => trimTrailingSlash(process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337');
+export const strapiUrl = () => {
+	const url = trimTrailingSlash(process.env.NEXT_PUBLIC_STRAPI_URL || '');
+
+	if (url) return url;
+	if (process.env.NODE_ENV === 'development') return `http://localhost:1337`;
+
+	throw new Error('NEXT_PUBLIC_STRAPI_URL is not set in production environment');
+};

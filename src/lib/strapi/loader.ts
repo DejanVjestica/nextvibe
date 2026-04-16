@@ -2,9 +2,6 @@ import { ImageLoader, ImageLoaderProps } from 'next/image';
 import { strapiMediaUrl } from '@/lib/config/strapi-media-url';
 
 const strapiLoader: ImageLoader = ({ src, width, quality }: ImageLoaderProps) => {
-	const mediaUrl = strapiMediaUrl();
-	if (!mediaUrl) throw new Error('NEXT_PUBLIC_STRAPI_MEDIA_URL is not defined');
-
 	const path = src.startsWith('http') ? new URL(src).pathname : src;
 	const prefix = imagePrefix(width);
 
@@ -13,7 +10,7 @@ const strapiLoader: ImageLoader = ({ src, width, quality }: ImageLoaderProps) =>
 	const directory = srcParts.join('/');
 
 	const finalPath = prefix ? `${directory}/${prefix}_${filename}?w=${width}&q=${quality || 75}` : path;
-	return `${mediaUrl}${finalPath}`;
+	return `${strapiMediaUrl()}${finalPath}`;
 };
 
 const imagePrefix = (width: number): string | null => {

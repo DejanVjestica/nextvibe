@@ -35,6 +35,14 @@ describe('strapiUrl', () => {
 		expect(strapiUrl()).toBe(`http://localhost:1337`);
 	});
 
+	it('returns localhost URL in test when NEXT_PUBLIC_STRAPI_URL is not set', () => {
+		process.env = {
+			...originalEnv,
+			NODE_ENV: 'test',
+		};
+		expect(strapiUrl()).toBe(`http://localhost:1337`);
+	});
+
 	it('returns undefined in production when NEXT_PUBLIC_STRAPI_URL is not set', () => {
 		process.env = {
 			...originalEnv,

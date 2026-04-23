@@ -5,6 +5,7 @@ export const strapiUrl = () => {
 
 	if (url) return url;
 	if (process.env.NODE_ENV === 'development') return `http://localhost:1337`;
+	if (process.env.NODE_ENV === 'test') return `http://localhost:1337`;
 
-	throw new Error('NEXT_PUBLIC_STRAPI_URL is not set in production environment');
+	throw new Error(`NEXT_PUBLIC_STRAPI_URL is not set in ${process.env.NODE_ENV} environment`);
 };

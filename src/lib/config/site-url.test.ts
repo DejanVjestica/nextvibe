@@ -36,6 +36,15 @@ describe('siteUrl', () => {
 		expect(siteUrl()).toBe(`http://localhost:3000`);
 	});
 
+	it('returns localhost URL in test when NEXT_PUBLIC_SITE_URL is not set', () => {
+		process.env = {
+			...originalEnv,
+			NODE_ENV: 'test',
+			PORT: '3000',
+		};
+		expect(siteUrl()).toBe(`http://localhost:3000`);
+	});
+
 	it('returns undefined in production when NEXT_PUBLIC_SITE_URL is not set', () => {
 		process.env = {
 			...originalEnv,

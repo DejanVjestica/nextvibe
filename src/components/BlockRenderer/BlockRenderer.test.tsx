@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { ParsedBlockType } from '@/lib/strapi/parse-blocks';
+import { ParsedBlockType } from '@/lib/strapi/types/parsed-blocks';
 import { BlockRenderer } from '@/components/BlockRenderer';
 
 vi.mock('@/components/Media', () => ({

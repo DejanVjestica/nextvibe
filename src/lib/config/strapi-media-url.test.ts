@@ -35,6 +35,14 @@ describe('strapiMediaUrl', () => {
 		expect(strapiMediaUrl()).toBe(`http://localhost:1337`);
 	});
 
+	it('returns localhost URL in test when NEXT_PUBLIC_STRAPI_MEDIA_URL is not set', () => {
+		process.env = {
+			...originalEnv,
+			NODE_ENV: 'test',
+		};
+		expect(strapiMediaUrl()).toBe(`http://localhost:1337`);
+	});
+
 	it('throws error in production when NEXT_PUBLIC_STRAPI_MEDIA_URL is not set', () => {
 		process.env = {
 			...originalEnv,

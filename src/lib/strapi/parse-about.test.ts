@@ -73,4 +73,60 @@ describe('parseAbout', () => {
 			blocks: null,
 		});
 	});
+
+	it('should return null for title if it is missing', () => {
+		const raw = {
+			createdAt: '2026-03-16T16:22:11.570Z',
+			documentId: 'yyauxnbz57281i3m9vyummpd',
+			id: 3,
+			locale: 'de',
+			publishedAt: '2026-04-24T13:16:17.495Z',
+			title: null,
+			updatedAt: '2026-04-24T13:16:17.532Z',
+			createdBy: null,
+			updatedBy: null,
+			localizations: {
+				data: [],
+				meta: { pagination: { page: 1, pageSize: 25, pageCount: 0, total: 0 } },
+			},
+			blocks: mockSelectedBlocks({ richText: true }),
+		} satisfies About;
+
+		expect(parseAbout(raw)).toEqual({
+			id: 3,
+			title: null,
+			blocks: [
+				{
+					id: 1,
+					type: 'rich-text',
+					body: 'This is a text block.',
+				},
+			],
+		});
+	});
+
+	it('should return null for blocks if they are missing', () => {
+		const raw = {
+			createdAt: '2026-03-16T16:22:11.570Z',
+			documentId: 'yyauxnbz57281i3m9vyummpd',
+			id: 3,
+			locale: 'de',
+			publishedAt: '2026-04-24T13:16:17.495Z',
+			title: 'about me',
+			updatedAt: '2026-04-24T13:16:17.532Z',
+			createdBy: null,
+			updatedBy: null,
+			localizations: {
+				data: [],
+				meta: { pagination: { page: 1, pageSize: 25, pageCount: 0, total: 0 } },
+			},
+			blocks: [],
+		} satisfies About;
+
+		expect(parseAbout(raw)).toEqual({
+			id: 3,
+			title: 'about me',
+			blocks: null,
+		});
+	});
 });

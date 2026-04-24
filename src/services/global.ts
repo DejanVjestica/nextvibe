@@ -14,9 +14,5 @@ export const getGlobal = cache(async (locale: string): Promise<ParsedGlobal | nu
 		locale,
 	});
 
-	const { siteName, siteDescription } = res.data;
-
-	if (!res?.data && !siteName && !siteDescription?.length) return null;
-
 	return parseGlobal(res.data);
 });

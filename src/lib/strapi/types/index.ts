@@ -22,7 +22,7 @@ export type StrapiItem<T> = {
 	documentId: string;
 } & GetAttributes<T>;
 
-export type BlockItem<T, C extends string> = GetAttributes<T> & {
+export type Component<T, C extends string> = GetAttributes<T> & {
 	id: number;
 	__component: C;
 };
@@ -33,19 +33,19 @@ export type Category = StrapiItem<ApiCategoryCategory>;
 
 export type Global = StrapiItem<ApiGlobalGlobal>;
 export type About = Omit<StrapiItem<ApiAboutAbout>, 'blocks'> & {
-	blocks: ContentBlock[];
+	blocks: ContentBlocks[];
 };
 
-export type ComponentMedia = Omit<BlockItem<SharedMedia, 'shared.media'>, 'file'> & {
+export type ComponentMedia = Omit<Component<SharedMedia, 'shared.media'>, 'file'> & {
 	file: StrapiMedia;
 };
 
-export type ComponentQuote = BlockItem<SharedQuote, 'shared.quote'>;
-export type ComponentRichText = BlockItem<SharedRichText, 'shared.rich-text'>;
-export type ComponentSlider = BlockItem<SharedSlider, 'shared.slider'>;
-export type ComponentCeo = BlockItem<SharedSeo, 'shared.ceo'>;
+export type ComponentQuote = Component<SharedQuote, 'shared.quote'>;
+export type ComponentRichText = Component<SharedRichText, 'shared.rich-text'>;
+export type ComponentSlider = Component<SharedSlider, 'shared.slider'>;
+export type ComponentCeo = Component<SharedSeo, 'shared.ceo'>;
 
-export type ContentBlock = ComponentMedia | ComponentQuote | ComponentRichText | ComponentSlider;
+export type ContentBlocks = ComponentMedia | ComponentQuote | ComponentRichText | ComponentSlider;
 
 export interface StrapiResponse<T> {
 	data: T;

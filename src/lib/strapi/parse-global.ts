@@ -5,5 +5,5 @@ export const parseGlobal = (raw: Global): ParsedGlobal => ({
 	id: raw.id,
 	siteName: raw.siteName,
 	siteDescription: raw.siteDescription,
-	defaultCeo: raw.defaultSeo,
+	defaultSeo: raw.defaultSeo,
 });

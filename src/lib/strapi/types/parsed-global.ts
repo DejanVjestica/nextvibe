@@ -4,5 +4,5 @@ export type ParsedGlobal = {
 	id: number;
 	siteName: string;
 	siteDescription: string;
-	defaultCeo: ComponentCeo | null;
+	defaultSeo: ComponentCeo | null;
 };

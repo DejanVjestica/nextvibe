@@ -1,4 +1,4 @@
-import { ContentBlock } from '@/lib/strapi/types';
+import { ContentBlocks } from '@/lib/strapi/types';
 import { parseMedia } from '@/lib/strapi/parse-media';
 import {
 	ParsedBlockMedia,
@@ -8,7 +8,7 @@ import {
 	ParsedBlockType,
 } from './types/parsed-blocks';
 
-const parseBlock = (block: ContentBlock): ParsedBlockType => {
+const parseBlock = (block: ContentBlocks): ParsedBlockType => {
 	switch (block.__component) {
 		case 'shared.media':
 			return {
@@ -38,6 +38,6 @@ const parseBlock = (block: ContentBlock): ParsedBlockType => {
 	}
 };
 
-export const parseBlocks = (blocks: ContentBlock[]) => {
+export const parseBlocks = (blocks: ContentBlocks[]) => {
 	return blocks.map(parseBlock).filter(Boolean);
 };

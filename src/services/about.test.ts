@@ -1,6 +1,6 @@
 import { getAbout } from './about';
 import { fetchStrapi } from '@/lib/strapi/fetch';
-import { mockImageFormats } from '@/lib/strapi/mocks/image.mock';
+import { mockSelectedBlocks } from '@/lib/strapi/mocks/blocks.mock';
 
 vi.mock('@/lib/strapi/fetch', () => ({
 	fetchStrapi: vi.fn(),
@@ -36,25 +36,7 @@ describe('getAbout Service', () => {
 			data: {
 				id: 2,
 				title: 'Our Story',
-				blocks: [
-					{
-						__component: 'shared.rich-text',
-						id: 1,
-						body: 'This is the required body content',
-					},
-					{
-						__component: 'shared.media',
-						id: 2,
-						file: {
-							alternativeText: 'lorem ipsum',
-							formats: mockImageFormats,
-							height: 800,
-							mime: 'image/jpeg',
-							url: '/mock-image.jpg',
-							width: 1200,
-						},
-					},
-				],
+				blocks: mockSelectedBlocks({ richText: true, media: true }),
 			},
 			meta: {},
 		});
@@ -68,18 +50,18 @@ describe('getAbout Service', () => {
 				{
 					id: 1,
 					type: 'rich-text',
-					body: 'This is the required body content',
+					body: 'This is a text block.',
 				},
 				{
 					id: 2,
 					type: 'media',
 					file: {
-						alternativeText: 'lorem ipsum',
-						formats: mockImageFormats,
-						height: 800,
+						alternativeText: null,
+						formats: {},
+						height: 1000,
 						type: 'image',
-						url: '/mock-image.jpg',
-						width: 1200,
+						url: 'https://example.com/image.jpg',
+						width: 1000,
 					},
 				},
 			],

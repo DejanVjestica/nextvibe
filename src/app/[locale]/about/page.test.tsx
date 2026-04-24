@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import AboutPage from '@/app/[locale]/about/page';
 import { getAbout } from '@/services/about';
 import { notFound } from 'next/navigation';
-import { ParsedBlockType } from '@/lib/strapi/parse-blocks';
+import { ParsedBlockType } from '@/lib/strapi/types/parsed-blocks';
 import { Locale } from '@/i18n-config';
 import { mockImageFormats } from '@/lib/strapi/mocks/image.mock';
 
@@ -18,7 +18,7 @@ vi.mock('@/services/about', () => ({
 
 vi.mock('@/components/BlockRenderer', () => ({
 	BlockRenderer: ({ blocks }: { blocks: ParsedBlockType[] }) => (
-		<div data-testid="block-renderer-mock">
+		<div data-testid="renderer-mock">
 			{blocks.map((block, i) => (
 				<div key={i} data-testid={`block-${block.type}`}>
 					{block.type}
@@ -76,13 +76,17 @@ describe('AboutPage Server Component', () => {
 
 		render(PageJSX);
 
+		expect(getAbout).toHaveBeenCalledWith('en');
+		expect(getAbout).toHaveBeenCalledTimes(1);
+
 		expect(
 			screen.getByRole('heading', {
 				level: 1,
 				name: 'Our Story',
 			}),
 		).toBeInTheDocument();
-		expect(screen.getByTestId('block-renderer-mock').children).toHaveLength(3);
+		expect(screen.getByTestId('renderer-mock')).toBeInTheDocument();
+		expect(screen.queryAllByTestId(/^block-/)).toHaveLength(3);
 	});
 
 	it('triggers the Next.js notFound boundary when data is missing', async () => {
@@ -90,6 +94,8 @@ describe('AboutPage Server Component', () => {
 
 		await expect(AboutPage({ params })).rejects.toThrow('NEXT_NOT_FOUND');
 
+		expect(getAbout).toHaveBeenCalledWith('en');
+		expect(getAbout).toHaveBeenCalledTimes(1);
 		expect(notFound).toHaveBeenCalled();
 	});
 
@@ -121,13 +127,17 @@ describe('AboutPage Server Component', () => {
 		const PageJSX = await AboutPage({ params });
 		render(PageJSX);
 
+		expect(getAbout).toHaveBeenCalledWith('en');
+		expect(getAbout).toHaveBeenCalledTimes(1);
+
 		expect(
 			screen.queryByRole('heading', {
 				level: 1,
 			}),
 		).toBeNull();
 
-		expect(screen.getByTestId('block-renderer-mock').children).toHaveLength(2);
+		expect(screen.getByTestId('renderer-mock')).toBeInTheDocument();
+		expect(screen.queryAllByTestId(/^block-/)).toHaveLength(2);
 	});
 
 	it('does not render blocks if the blocks are empty array', async () => {
@@ -140,6 +150,9 @@ describe('AboutPage Server Component', () => {
 		const PageJSX = await AboutPage({ params });
 		render(PageJSX);
 
+		expect(getAbout).toHaveBeenCalledWith('en');
+		expect(getAbout).toHaveBeenCalledTimes(1);
+
 		expect(
 			screen.getByRole('heading', {
 				level: 1,
@@ -147,6 +160,7 @@ describe('AboutPage Server Component', () => {
 			}),
 		).toBeInTheDocument();
 
-		expect(screen.getByTestId('block-renderer-mock')).toBeEmptyDOMElement();
+		expect(screen.getByTestId('renderer-mock')).toBeInTheDocument();
+		expect(screen.queryAllByTestId(/^block-/)).toHaveLength(0);
 	});
 });

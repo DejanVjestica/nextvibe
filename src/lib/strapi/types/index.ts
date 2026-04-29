@@ -37,7 +37,7 @@ export type About = Omit<StrapiItem<ApiAboutAbout>, 'blocks'> & {
 };
 
 export type ComponentMedia = Omit<Component<SharedMedia, 'shared.media'>, 'file'> & {
-	file: StrapiMedia;
+	file: StrapiMedia | null;
 };
 
 export type ComponentQuote = Component<SharedQuote, 'shared.quote'>;

@@ -3,7 +3,7 @@ import { ParsedMediaType } from '@/lib/strapi/types/parsed-media';
 export type ParsedBlockMedia = {
 	type: 'media';
 	id: number;
-	file: ParsedMediaType | null;
+	file: ParsedMediaType;
 };
 
 export type ParsedBlockQuote = {
@@ -22,7 +22,7 @@ export type ParsedBlockSlider = {
 export type ParsedBlockRichtext = {
 	type: 'rich-text';
 	id: number;
-	body: string | null;
+	body: string;
 };
 
 export type ParsedBlockType = ParsedBlockMedia | ParsedBlockQuote | ParsedBlockSlider | ParsedBlockRichtext;

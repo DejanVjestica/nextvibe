@@ -5,6 +5,7 @@ import {
 	ApiCategoryCategory,
 	ApiAboutAbout,
 	ApiGlobalGlobal,
+	ApiHomeHome,
 } from '@/lib/strapi/types/generated/contentTypes';
 
 import {
@@ -13,6 +14,8 @@ import {
 	SharedRichText,
 	SharedSlider,
 	SharedSeo,
+	SharedHero,
+	SharedButton,
 } from '@/lib/strapi/types/generated/components';
 
 export type GetAttributes<T> = T extends { attributes: infer A } ? A : never;
@@ -35,6 +38,7 @@ export type Global = StrapiItem<ApiGlobalGlobal>;
 export type About = Omit<StrapiItem<ApiAboutAbout>, 'blocks'> & {
 	blocks: ContentBlocks[];
 };
+export type Home = StrapiItem<ApiHomeHome>;
 
 export type ComponentMedia = Omit<Component<SharedMedia, 'shared.media'>, 'file'> & {
 	file: StrapiMedia | null;
@@ -44,6 +48,8 @@ export type ComponentQuote = Component<SharedQuote, 'shared.quote'>;
 export type ComponentRichText = Component<SharedRichText, 'shared.rich-text'>;
 export type ComponentSlider = Component<SharedSlider, 'shared.slider'>;
 export type ComponentCeo = Component<SharedSeo, 'shared.ceo'>;
+export type ComponentHero = Component<SharedHero, 'shared.hero'>;
+export type ComponentButton = Component<SharedButton, 'shared.button'>;
 
 export type ContentBlocks = ComponentMedia | ComponentQuote | ComponentRichText | ComponentSlider;
 

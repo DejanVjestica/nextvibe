@@ -15,6 +15,11 @@ describe('getAbout Service', () => {
 		vi.mocked(fetchStrapi).mockResolvedValue({
 			data: {
 				id: 2,
+				documentId: 'frqhnrreev16jmtxbakgts2b',
+				createdAt: '2026-04-30T09:36:01.168Z',
+				updatedAt: '2026-04-30T12:14:43.188Z',
+				publishedAt: '2026-04-30T12:14:43.204Z',
+				locale: 'en',
 				title: 'Our Story',
 				blocks: [],
 			},
@@ -35,6 +40,11 @@ describe('getAbout Service', () => {
 		vi.mocked(fetchStrapi).mockResolvedValue({
 			data: {
 				id: 2,
+				documentId: 'frqhnrreev16jmtxbakgts2b',
+				createdAt: '2026-04-30T09:36:01.168Z',
+				updatedAt: '2026-04-30T12:14:43.188Z',
+				publishedAt: '2026-04-30T12:14:43.204Z',
+				locale: 'en',
 				title: 'Our Story',
 				blocks: mockSelectedBlocks({ richText: true, media: true }),
 			},
@@ -72,6 +82,11 @@ describe('getAbout Service', () => {
 		vi.mocked(fetchStrapi).mockResolvedValue({
 			data: {
 				id: 2,
+				documentId: 'frqhnrreev16jmtxbakgts2b',
+				createdAt: '2026-04-30T09:36:01.168Z',
+				updatedAt: '2026-04-30T12:14:43.188Z',
+				publishedAt: '2026-04-30T12:14:43.204Z',
+				locale: 'en',
 				title: null,
 				blocks: [],
 			},

@@ -67,7 +67,7 @@ describe('getHome Service', () => {
 				locale: 'de',
 				hero: {
 					id: 9,
-					eyebrow: 'lorem ipsum 1',
+					eyebrow: null,
 					title: 'Main page',
 					subtitle: 'Lorem ipsum dolor',
 					variant: 'main',
@@ -102,7 +102,7 @@ describe('getHome Service', () => {
 		expect(result).toEqual({
 			id: 9,
 			hero: {
-				eyebrow: 'lorem ipsum 1',
+				eyebrow: null,
 				title: 'Main page',
 				subtitle: 'Lorem ipsum dolor',
 				variant: 'main',
@@ -111,8 +111,6 @@ describe('getHome Service', () => {
 					label: 'asddsadsa',
 					ariaLabel: 'ddsadsads',
 					as: 'button',
-					href: null,
-					openInNewTab: false,
 					kind: 'primary',
 					size: 'large',
 					icon: null,

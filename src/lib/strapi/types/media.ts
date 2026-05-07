@@ -27,6 +27,8 @@ export interface StrapiMedia {
 	width: number;
 	height: number;
 	formats: StrapiImageFormats;
+	focalPoint: unknown | null;
+	provider_metadata: unknown | null;
 	hash: string;
 	ext: string;
 	mime: string;

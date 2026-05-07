@@ -1,6 +1,7 @@
 import { parseBlocks } from './parse-blocks';
 import { mockSelectedBlocks } from '@/lib/strapi/mocks/blocks.mock';
 import { ContentBlocks } from './types';
+import { createMockParsedImage } from './mocks/parsedImage.mock';
 
 describe('parseBlocks', () => {
 	it('should parse blocks correctly', () => {
@@ -21,14 +22,7 @@ describe('parseBlocks', () => {
 			{
 				id: 2,
 				type: 'media',
-				file: {
-					url: 'https://example.com/image.jpg',
-					type: 'image',
-					alternativeText: null,
-					formats: {},
-					height: 1000,
-					width: 1000,
-				},
+				file: createMockParsedImage(),
 			},
 		];
 

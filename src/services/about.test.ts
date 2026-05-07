@@ -1,6 +1,7 @@
 import { getAbout } from './about';
 import { fetchStrapi } from '@/lib/strapi/fetch';
 import { mockSelectedBlocks } from '@/lib/strapi/mocks/blocks.mock';
+import { createMockParsedImage } from '@/lib/strapi/mocks/parsedImage.mock';
 
 vi.mock('@/lib/strapi/fetch', () => ({
 	fetchStrapi: vi.fn(),
@@ -65,14 +66,7 @@ describe('getAbout Service', () => {
 				{
 					id: 2,
 					type: 'media',
-					file: {
-						alternativeText: null,
-						formats: {},
-						height: 1000,
-						type: 'image',
-						url: 'https://example.com/image.jpg',
-						width: 1000,
-					},
+					file: createMockParsedImage(),
 				},
 			],
 		});

@@ -4,7 +4,7 @@ import { getAbout } from '@/services/about';
 import { notFound } from 'next/navigation';
 import { ParsedBlockType } from '@/lib/strapi/types/parsed-blocks';
 import { Locale } from '@/i18n-config';
-import { mockImageFormats } from '@/lib/strapi/mocks/image.mock';
+import { createMockParsedImage } from '@/lib/strapi/mocks/parsedImage.mock';
 
 vi.mock('next/navigation', () => ({
 	notFound: vi.fn(() => {
@@ -50,14 +50,7 @@ describe('AboutPage Server Component', () => {
 				{
 					id: 2,
 					type: 'media',
-					file: {
-						alternativeText: 'lorem ipsum',
-						formats: mockImageFormats,
-						height: 800,
-						type: 'image',
-						url: '/mock-image.jpg',
-						width: 1200,
-					},
+					file: createMockParsedImage(),
 				},
 				{
 					id: 2,
@@ -112,14 +105,7 @@ describe('AboutPage Server Component', () => {
 				{
 					id: 2,
 					type: 'media',
-					file: {
-						alternativeText: 'lorem ipsum',
-						formats: mockImageFormats,
-						height: 800,
-						type: 'image' as const,
-						url: '/mock-image.jpg',
-						width: 1200,
-					},
+					file: createMockParsedImage(),
 				},
 			],
 		});

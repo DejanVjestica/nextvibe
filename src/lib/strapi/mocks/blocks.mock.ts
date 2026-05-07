@@ -1,4 +1,5 @@
 import { ComponentRichText, ComponentMedia, ComponentQuote } from '../types';
+import { createMockMedia } from './image.mock';
 
 // TODO: Add slider block
 
@@ -18,26 +19,7 @@ export const mockRichTextBlock = {
 export const mockMediaBlock = {
 	id: 2,
 	__component: 'shared.media',
-	file: {
-		id: 1,
-		documentId: 'media-doc-id',
-		name: 'image.jpg',
-		caption: null,
-		hash: 'image-hash',
-		ext: '.jpg',
-		size: 500,
-		url: 'https://example.com/image.jpg',
-		previewUrl: null,
-		provider: 'local',
-		createdAt: '2026-03-16T16:22:11.570Z',
-		updatedAt: '2026-04-24T13:16:17.532Z',
-		publishedAt: '2026-04-24T13:16:17.495Z',
-		alternativeText: null,
-		formats: {},
-		height: 1000,
-		width: 1000,
-		mime: 'image/png',
-	},
+	file: createMockMedia(),
 } satisfies ComponentMedia;
 
 export const mockSelectedBlocks = ({

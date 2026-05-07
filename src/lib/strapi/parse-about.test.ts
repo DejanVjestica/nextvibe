@@ -2,6 +2,7 @@ import { ParsedAbout } from './types/parsed-about';
 import { parseAbout } from './parse-about';
 import { About } from './types';
 import { mockSelectedBlocks } from './mocks/blocks.mock';
+import { createMockParsedImage } from './mocks/parsedImage.mock';
 
 describe('parseAbout', () => {
 	it('should parse about data correctly', () => {
@@ -34,14 +35,7 @@ describe('parseAbout', () => {
 				{
 					id: 2,
 					type: 'media',
-					file: {
-						url: 'https://example.com/image.jpg',
-						type: 'image',
-						alternativeText: null,
-						formats: {},
-						height: 1000,
-						width: 1000,
-					},
+					file: createMockParsedImage(),
 				},
 			],
 		};

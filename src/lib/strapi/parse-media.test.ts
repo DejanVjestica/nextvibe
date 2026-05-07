@@ -1,17 +1,11 @@
 import { strapiUrl } from '../config/strapi-url';
-import { createMockMedia, mockImageFormats } from './mocks/image.mock';
+import { createMockMedia } from './mocks/image.mock';
+import { createMockParsedImage } from './mocks/parsedImage.mock';
 import { parseMedia } from './parse-media';
 
 describe('parseMedia', () => {
 	it('should parse image/jpeg media correctly', () => {
-		expect(parseMedia(createMockMedia())).toEqual({
-			type: 'image',
-			url: '/uploads/mock-image.jpg',
-			width: 1000,
-			height: 1000,
-			alternativeText: 'mock alt',
-			formats: mockImageFormats,
-		});
+		expect(parseMedia(createMockMedia())).toEqual(createMockParsedImage());
 	});
 
 	it('should parse application/pdf media correctly', () => {

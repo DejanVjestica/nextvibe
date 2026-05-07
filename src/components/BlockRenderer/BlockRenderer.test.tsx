@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { ParsedBlockType } from '@/lib/strapi/types/parsed-blocks';
 import { BlockRenderer } from '@/components/BlockRenderer';
+import { createMockParsedImage } from '@/lib/strapi/mocks/parsedImage.mock';
 
 vi.mock('@/components/Media', () => ({
 	Media: () => <div data-testid="mock-media">Media Component</div>,
@@ -35,14 +36,7 @@ describe('BlockRenderer Component', () => {
 			{
 				id: 1,
 				type: 'media',
-				file: {
-					alternativeText: 'lorem ipsum',
-					formats: {},
-					height: 800,
-					type: 'image',
-					url: '/mock-image.jpg',
-					width: 1200,
-				},
+				file: createMockParsedImage(),
 			},
 		];
 
@@ -57,14 +51,7 @@ describe('BlockRenderer Component', () => {
 			{
 				id: 2,
 				type: 'media',
-				file: {
-					alternativeText: 'lorem ipsum',
-					formats: {},
-					height: 800,
-					type: 'image',
-					url: '/mock-image.jpg',
-					width: 1200,
-				},
+				file: createMockParsedImage(),
 			},
 		];
 

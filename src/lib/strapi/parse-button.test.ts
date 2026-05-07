@@ -62,8 +62,6 @@ describe('parseButton', () => {
 			size: 'large',
 			icon: 'MoveUpLeft',
 			as: 'button',
-			href: null,
-			openInNewTab: true,
 		});
 	});
 });

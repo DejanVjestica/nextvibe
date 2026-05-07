@@ -17,8 +17,6 @@ type ParsedLinkButton = BaseButton & {
 
 type ParsedButton = BaseButton & {
 	as: 'button';
-	href: null;
-	openInNewTab: null;
 };
 
 export type ParsedCtaButton = ParsedLinkButton | ParsedButton;

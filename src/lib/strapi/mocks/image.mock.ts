@@ -1,6 +1,6 @@
-import { StrapiImageFormat, StrapiImageFormats } from '@/lib/strapi/types/media';
+import { StrapiImageFormat, StrapiImageFormats, StrapiMedia } from '@/lib/strapi/types/media';
 
-export const createMockFormat = (overrides: Partial<StrapiImageFormat> = {}): StrapiImageFormat => ({
+const createMockFormat = (overrides: Partial<StrapiImageFormat> = {}): StrapiImageFormat => ({
 	name: 'mock-image.jpg',
 	hash: 'mock_hash_123',
 	ext: '.jpg',
@@ -36,3 +36,27 @@ export const mockImageFormats: StrapiImageFormats = {
 		url: '/uploads/large_mock.jpg',
 	}),
 };
+
+export const createMockMedia = (overrides: Partial<StrapiMedia> = {}): StrapiMedia => ({
+	id: 1,
+	documentId: 'mock-doc-id',
+	name: 'mock-image.jpg',
+	alternativeText: 'mock alt',
+	caption: null,
+	focalPoint: null,
+	width: 1000,
+	height: 1000,
+	formats: mockImageFormats,
+	hash: 'mock_hash',
+	ext: '.jpg',
+	mime: 'image/jpeg',
+	size: 50,
+	url: '/uploads/mock-image.jpg',
+	previewUrl: null,
+	provider: 'local',
+	provider_metadata: null,
+	createdAt: '',
+	updatedAt: '',
+	publishedAt: '',
+	...overrides,
+});

@@ -11,7 +11,8 @@ const rawHero = {
 	title: 'Main page',
 	subtitle: 'Lorem ipsum dolor',
 	variant: 'main',
-	image: null,
+	imageLight: null,
+	imageDark: null,
 
 	primaryCta: {
 		id: 18,
@@ -58,7 +59,8 @@ const parsedHero = {
 	title: 'Main page',
 	subtitle: 'Lorem ipsum dolor',
 	variant: 'main',
-	image: null,
+	imageLight: null,
+	imageDark: null,
 	primaryCta: {
 		ariaLabel: 'ddsadsads',
 		as: 'button',
@@ -88,9 +90,10 @@ describe('parseHero', () => {
 		expect(
 			parseHero({
 				...rawHero,
-				image: createMockMedia(),
+				imageLight: createMockMedia(),
+				imageDark: createMockMedia(),
 			}),
-		).toEqual({ ...parsedHero, image: createMockParsedImage() });
+		).toEqual({ ...parsedHero, imageLight: createMockParsedImage(), imageDark: createMockParsedImage() });
 	});
 
 	it('should parse hero data correctly with no primaryCta', () => {
@@ -98,9 +101,15 @@ describe('parseHero', () => {
 			parseHero({
 				...rawHero,
 				primaryCta: null,
-				image: createMockMedia(),
+				imageLight: createMockMedia(),
+				imageDark: createMockMedia(),
 			}),
-		).toEqual({ ...parsedHero, primaryCta: null, image: createMockParsedImage() });
+		).toEqual({
+			...parsedHero,
+			primaryCta: null,
+			imageLight: createMockParsedImage(),
+			imageDark: createMockParsedImage(),
+		});
 	});
 	it('should parse hero data correctly with no buttons', () => {
 		expect(
@@ -108,8 +117,15 @@ describe('parseHero', () => {
 				...rawHero,
 				primaryCta: null,
 				secondaryCta: null,
-				image: createMockMedia(),
+				imageLight: createMockMedia(),
+				imageDark: createMockMedia(),
 			}),
-		).toEqual({ ...parsedHero, primaryCta: null, secondaryCta: null, image: createMockParsedImage() });
+		).toEqual({
+			...parsedHero,
+			primaryCta: null,
+			secondaryCta: null,
+			imageLight: createMockParsedImage(),
+			imageDark: createMockParsedImage(),
+		});
 	});
 });

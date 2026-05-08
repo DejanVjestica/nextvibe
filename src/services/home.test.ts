@@ -106,7 +106,8 @@ describe('getHome Service', () => {
 				title: 'Main page',
 				subtitle: 'Lorem ipsum dolor',
 				variant: 'main',
-				image: null,
+				imageLight: null,
+				imageDark: null,
 				primaryCta: {
 					label: 'asddsadsa',
 					ariaLabel: 'ddsadsads',

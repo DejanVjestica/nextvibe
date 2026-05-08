@@ -14,7 +14,7 @@ export interface SharedButton extends Struct.ComponentSchema {
       ['primary', 'secondary', 'outline', 'ghost', 'link']
     >;
     label: Schema.Attribute.String;
-    openInNewTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    openInNewTab: Schema.Attribute.Boolean;
     size: Schema.Attribute.Enumeration<['small', 'medium', 'large']>;
   };
 }
@@ -26,7 +26,8 @@ export interface SharedHero extends Struct.ComponentSchema {
   };
   attributes: {
     eyebrow: Schema.Attribute.String;
-    image: Schema.Attribute.Media<'images'>;
+    imageDark: Schema.Attribute.Media<'images'>;
+    imageLight: Schema.Attribute.Media<'images'>;
     primaryCta: Schema.Attribute.Component<'shared.button', false>;
     secondaryCta: Schema.Attribute.Component<'shared.button', false>;
     subtitle: Schema.Attribute.Text;

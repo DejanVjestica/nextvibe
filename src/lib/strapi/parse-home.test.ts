@@ -32,7 +32,8 @@ describe('parseHome', () => {
 				title: 'Main page',
 				subtitle: 'Lorem ipsum dolor',
 				variant: 'main',
-				image: null,
+				imageLight: null,
+				imageDark: null,
 
 				primaryCta: {
 					id: 18,
@@ -82,7 +83,8 @@ describe('parseHome', () => {
 				title: 'Main page',
 				subtitle: 'Lorem ipsum dolor',
 				variant: 'main',
-				image: null,
+				imageLight: null,
+				imageDark: null,
 				primaryCta: {
 					ariaLabel: 'ddsadsads',
 					as: 'button',

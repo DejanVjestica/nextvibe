@@ -6,7 +6,10 @@ import { ParsedHome } from '@/lib/strapi/types/parsed-home';
 const populate = {
 	hero: {
 		populate: {
-			image: {
+			imageLight: {
+				populate: '*',
+			},
+			imageDark: {
 				populate: '*',
 			},
 			primaryCta: {

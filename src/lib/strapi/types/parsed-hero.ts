@@ -5,7 +5,8 @@ export type ParsedHero = {
 	eyebrow: string | null;
 	title: string | null;
 	subtitle: string | null;
-	image: ParsedMediaType | null;
+	imageLight: ParsedMediaType | null;
+	imageDark: ParsedMediaType | null;
 	variant: 'main' | 'minimal';
 	primaryCta: ParsedCtaButton | null;
 	secondaryCta: ParsedCtaButton | null;

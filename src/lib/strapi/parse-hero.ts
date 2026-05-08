@@ -8,7 +8,8 @@ export const parseHero = (raw: ComponentHero): ParsedHero => ({
 	subtitle: raw.subtitle,
 	title: raw.title,
 	variant: raw.variant,
-	image: raw.image ? parseMedia(raw.image) : null,
+	imageLight: raw.imageLight ? parseMedia(raw.imageLight) : null,
+	imageDark: raw.imageDark ? parseMedia(raw.imageDark) : null,
 	primaryCta: raw.primaryCta ? parseButton(raw.primaryCta) : null,
 	secondaryCta: raw.secondaryCta ? parseButton(raw.secondaryCta) : null,
 });

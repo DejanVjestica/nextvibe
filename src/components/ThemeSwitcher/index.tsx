@@ -48,7 +48,7 @@ export const ThemeSwitcher = ({ locale }: ThemeSwitcherProps) => {
 		setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
 	};
 
-	const styles = `w-15 cursor-pointer p-2 transition-colors text-foreground hover:text-primary`;
+	const styles = `w-15 cursor-pointer p-2 text-foreground hover:text-primary`;
 
 	return (
 		<button onClick={toggleTheme} className={styles} aria-label={ariaLabel} title={ariaLabel}>

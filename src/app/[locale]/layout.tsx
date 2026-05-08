@@ -100,7 +100,7 @@ export default async function LocaleLayout({
 	return (
 		<>
 			<Header locale={locale as Locale}></Header>
-			<main className="max-w-container ps-8 pe-8 md:ps-32 md:pe-32 lg:ps-48 lg:pe-48">{children}</main>
+			<main className="layout">{children}</main>
 		</>
 	);
 }

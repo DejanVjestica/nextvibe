@@ -173,7 +173,7 @@ Images are handled using `next/image` with a custom Strapi loader.
 ### Pages & Navigation
 
 - [ ] Home page
-- [ ] About page
+- [x] About page
 - [ ] Contact page (form integration)
 - [ ] Impressum / legal notice page
 - [ ] Footer and header navigation across pages

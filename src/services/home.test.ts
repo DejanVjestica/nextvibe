@@ -32,7 +32,10 @@ describe('getHome Service', () => {
 			populate: {
 				hero: {
 					populate: {
-						image: {
+						imageLight: {
+							populate: '*',
+						},
+						imageDark: {
 							populate: '*',
 						},
 						primaryCta: {
